@@ -6,7 +6,8 @@ public class Editor extends Usuario {
     private String contraseña;
     private String nombreJournal;
 
-    public Editor (String usuario, String contraseña, String nombreJournal){
+    public Editor (String usuario, String contraseña, String nombreJournal,String nombre, String apellido, String correo,TipoRol rol){
+        super(nombre, apellido,correo,rol);
         this.usuario=usuario;
         this.contraseña= contraseña;
         this.nombreJournal= nombreJournal;
@@ -16,17 +17,24 @@ public class Editor extends Usuario {
         System.out.println("Ingrese 1 para aprobar");
         System.out.println("ingrese 2 para desaprobar");
         int input = sc.nextInt();
-        if (input ==1){
-            System.out.println("Articulo Aprobado");
-            return true;
-        }else if (input==2){
-            System.out.println("Articulo Desaprobado");
-            return false;
-        } else{
-            System.out.println("Entrada no valida, ingrese nuevamente");
-            return desicion(articulo);
+        boolean resultado=false;
+        boolean entradaValida=false;
+        while(!entradaValida){
+            if (input ==1){
+                System.out.println("Articulo Aprobado");
+                entradaValida=true;
+                resultado= true;
+            }else if (input==2){
+                System.out.println("Articulo Desaprobado");
+                entradaValida=true;
+                resultado= false;
+            } else{
+                System.out.println("Entrada no valida, ingrese nuevamente");
+            }
         }
         sc.close();
+        return resultado;
+
     }
     public Articulo getArticulo(){
         return articulo;
