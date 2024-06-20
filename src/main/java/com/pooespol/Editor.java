@@ -5,36 +5,32 @@ public class Editor extends Usuario {
     private String usuario;
     private String contraseña;
     private String nombreJournal;
+    
 
-    public Editor (String usuario, String contraseña, String nombreJournal,String nombre, String apellido, String correo,TipoRol rol){
-        super(nombre, apellido,correo,rol);
+
+    public Editor(String nombre, String apellido, String correo, TipoRol rol, String usuario, String contraseña, String nombreJournal){
+        super(nombre, apellido, correo, rol);
         this.usuario=usuario;
         this.contraseña= contraseña;
-        this.nombreJournal= nombreJournal;
+        this.nombreJournal= nombreJournal;     
     }
-    public boolean decision (Articulo articulo){
+
+
+    public boolean desicion (Articulo articulo){
         Scanner sc= new Scanner(System.in);
         System.out.println("Ingrese 1 para aprobar");
         System.out.println("ingrese 2 para desaprobar");
         int input = sc.nextInt();
-        boolean resultado=false;
-        boolean entradaValida=false;
-        while(!entradaValida){
-            if (input ==1){
-                System.out.println("Articulo Aprobado");
-                entradaValida=true;
-                resultado= true;
-            }else if (input==2){
-                System.out.println("Articulo Desaprobado");
-                entradaValida=true;
-                resultado= false;
-            } else{
-                System.out.println("Entrada no valida, ingrese nuevamente");
-            }
+        if (input ==1){
+            System.out.println("Articulo Aprobado");
+            return true;
+        }else if (input==2){
+            System.out.println("Articulo Desaprobado");
+            return false;
+        } else{
+            System.out.println("Entrada no valida, ingrese nuevamente");
+            return desicion(articulo);
         }
-        sc.close();
-        return resultado;
-
     }
     public Articulo getArticulo(){
         return articulo;
@@ -60,4 +56,5 @@ public class Editor extends Usuario {
     public void setNombreJournal(String nombreJournal){
         this.nombreJournal=nombreJournal;
     }
+
 }
