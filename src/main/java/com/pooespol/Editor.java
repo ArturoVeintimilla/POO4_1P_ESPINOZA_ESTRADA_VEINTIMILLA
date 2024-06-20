@@ -12,7 +12,7 @@ public class Editor extends Usuario {
         this.contraseña= contraseña;
         this.nombreJournal= nombreJournal;
     }
-    public boolean desicion (Articulo articulo){
+    public boolean decision (Articulo articulo){
         Scanner sc= new Scanner(System.in);
         System.out.println("Ingrese 1 para aprobar");
         System.out.println("ingrese 2 para desaprobar");
