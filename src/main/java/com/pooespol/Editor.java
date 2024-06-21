@@ -31,6 +31,7 @@ public class Editor extends Usuario {
             System.out.println("Entrada no valida, ingrese nuevamente");
             return desicion(articulo);
         }
+        sc.close();
     }
     public Articulo getArticulo(){
         return articulo;
