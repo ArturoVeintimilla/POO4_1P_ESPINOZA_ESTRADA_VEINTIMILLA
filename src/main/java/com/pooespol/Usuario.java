@@ -4,13 +4,14 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String correo;
-    private TipoRol rol;
+    protected TipoRol rol;
 
     public Usuario(String nombre, String apellido, String correo,TipoRol rol){
         this.nombre=nombre;
         this.apellido=apellido;
         this.correo=correo;
         this.rol=rol;
+        
     }
 
     public void enviarCorreo(){
@@ -47,6 +48,11 @@ public class Usuario {
 
     public void setRol(TipoRol rol) {
         this.rol = rol;
+    }
+     
+    @Override
+    public String toString(){
+        return nombre+", "+apellido+", "+correo+", "+rol;
     }
 
 }
