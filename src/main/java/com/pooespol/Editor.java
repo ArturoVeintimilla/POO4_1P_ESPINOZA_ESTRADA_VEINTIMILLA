@@ -9,7 +9,7 @@ public class Editor extends Usuario {
 
 
     public Editor(String nombre, String apellido, String correo, TipoRol rol, String usuario, String contraseña, String nombreJournal){
-        super(nombre, apellido, correo, rol);
+        super(nombre, apellido, correo, TipoRol.E);
         this.usuario=usuario;
         this.contraseña= contraseña;
         this.nombreJournal= nombreJournal;     
@@ -55,6 +55,12 @@ public class Editor extends Usuario {
     }
     public void setNombreJournal(String nombreJournal){
         this.nombreJournal=nombreJournal;
+    }
+
+    @Override
+    public String toString(){
+        super.toString();
+        return  " "+nombreJournal;
     }
 
 }

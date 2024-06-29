@@ -6,7 +6,7 @@ public class Autor extends Usuario {
    private String cInvest;
 
    public Autor(String nombre, String apellido, String correo, TipoRol rol, int codigoID, String institucion, String cInvest){
-        super(nombre, apellido, correo, rol);
+        super(nombre, apellido, correo, TipoRol.A);
         this.codigoID=codigoID;
         this.institucion=institucion;
         this.cInvest=cInvest;
@@ -34,6 +34,12 @@ public class Autor extends Usuario {
 
     public void setcInvest(String cInvest) {
         this.cInvest = cInvest;
+    }
+    
+    @Override
+    public String toString(){
+        super.toString();
+        return String.valueOf(codigoID)+", "+institucion+",  "+cInvest;
     }
    
 }

@@ -8,7 +8,7 @@ public class Revisor extends Usuario {
 
     //Constructores
     public Revisor(String usuario, String contrasenia, String especialidad, int numeroArticulo ,String nombre, String apellido, String correo,TipoRol rol){
-        super(nombre,apellido,correo,rol);
+        super(nombre,apellido,correo,TipoRol.R);
         this.usuario = usuario;
         this.contrasenia = contrasenia;
         this.especialidad = especialidad;
@@ -49,6 +49,12 @@ public class Revisor extends Usuario {
     public void setNumeroArticulo(int numeroArticulo) {
         this.numeroArticulo = numeroArticulo;
     }
+
+    @Override 
+     public String toString(){
+        super.toString();
+        return especialidad+", "+String.valueOf(numeroArticulo);
+     }
 
 
 
