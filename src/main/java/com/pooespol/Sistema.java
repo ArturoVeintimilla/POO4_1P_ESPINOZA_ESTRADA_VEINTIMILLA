@@ -19,11 +19,24 @@ public class Sistema {
         String institucion=sc.nextLine();
         System.out.println("Ingrese su campo de investigacion:");
         String campoInvestigacion=sc.nextLine();
-        Autor a=new Autor(nombre, apellido, correo, TipoRol.A, 0, institucion, campoInvestigacion);
-        String datosUsuario= a.toString(); 
-        Sistema.EscribirArchivo("RegistroUsuario.txt", datosUsuario);
+        Autor autor1=new Autor(nombre, apellido, correo, TipoRol.A, 0, institucion, campoInvestigacion);
+        String datosAutor= autor1.toString(); 
+        Sistema.EscribirArchivo("autores.txt", datosAutor);
         System.out.println("");
         System.out.println("------Registre los datos de su articulo:------");
+        System.out.println("Ingrese el titulo: ");
+        String titulo=sc.nextLine();
+        System.out.println("Ingrese el resumen del articulo:");
+        String resumen=sc.nextLine();
+        System.out.println("Ingrese el contenido: ");
+        String contenido=sc.nextLine();
+        System.out.println("Ingrese las palabras clave: ");
+        String palabrasClave=sc.nextLine();
+        Articulo articulo1=new Articulo(titulo, resumen, contenido, palabrasClave,TipoEstado.NoPublicado, 0);//generar codigo aleatorio, hacer un metodo que pertenezca al editor 
+        String datosArticulo= articulo1.toString(); 
+        Sistema.EscribirArchivo("articulos.txt", datosArticulo);
+
+        
 
 
     }
