@@ -64,6 +64,11 @@ public class Articulo {
         public void setArticuloID(int articuloID) {
             this.articuloID = articuloID;
         }
+
+        @Override
+        public String toString() {
+            return titulo + ", " + resumen + ", "+ contenido + ", " + palabrasClave + ", " + estado + ", " + articuloID ;
+        }
    
 
 }
