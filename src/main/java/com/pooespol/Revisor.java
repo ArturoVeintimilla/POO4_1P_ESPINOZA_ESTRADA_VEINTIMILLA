@@ -6,13 +6,22 @@ public class Revisor extends Usuario {
     private String especialidad;
     private int numeroArticulo;
 
-    //Constructores
+    //Constructor
     public Revisor(String usuario, String contrasenia, String especialidad, int numeroArticulo ,String nombre, String apellido, String correo,TipoRol rol){
         super(nombre,apellido,correo,rol);
         this.usuario = usuario;
         this.contrasenia = contrasenia;
         this.especialidad = especialidad;
         this.numeroArticulo = numeroArticulo;
+
+    }
+
+    //Metodos
+    public boolean decisionArticulo(Articulo articulo){
+
+
+
+        return false;
 
     }
 
@@ -48,6 +57,12 @@ public class Revisor extends Usuario {
 
     public void setNumeroArticulo(int numeroArticulo) {
         this.numeroArticulo = numeroArticulo;
+    }
+
+    //toString
+    @Override
+    public String toString() {
+        return super.toString()+"\nEspecialidad: "+especialidad+"\nArticulos revisados: "+numeroArticulo;
     }
 
 

@@ -49,4 +49,10 @@ public class Usuario {
         this.rol = rol;
     }
 
+
+    @Override
+    public String toString() {
+        return "Nombre: "+nombre+"\nApellido: "+apellido+"\nCorreo: "+correo+"\nRol: "+rol;
+    }
+
 }
