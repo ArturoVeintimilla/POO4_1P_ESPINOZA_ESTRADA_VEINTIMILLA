@@ -1,0 +1,6 @@
+Autor,1,Carlos,González,carlos@example.com,autor1,123456,Universidad X,Física
+Autor,2,Ana,Martínez,ana@example.com,autor2,abcdef,Instituto Y,Química
+Revisor,3,Pedro,Sánchez,pedro232474824@gmail.com,revisor1,abcd1234,Biología
+Revisor,4,Juan,Pérez,juan232474824@gmail.com,revisor2,efgh5678,Química
+Editor,5,Luis,Ramírez,luis232474824@gmail.com,editor1,wxyz1234,Journal A
+Editor,6,Elena,García,elena@example.com,editor2,ijkl5678,Journal B
