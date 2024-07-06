@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import com.pooespol.Main.Aplicacion;
 import com.pooespol.Principales.Usuario;
 
 public class Autor extends Usuario {
@@ -56,6 +57,9 @@ public class Autor extends Usuario {
 
         Articulo articulo = new Articulo(autor,codigoArticulo, tituloArticulo, resumenArticulo, contenidoArticulo, palabrasClaveArticulo);
         articulos.add(articulo);
+        
+        //Escribe al articulo en el archivo Articulos.txt 
+        Aplicacion.EscribirArchivo("Articulos.txt", articulo.toString());
 
         System.out.println(articulo.toString());
     }

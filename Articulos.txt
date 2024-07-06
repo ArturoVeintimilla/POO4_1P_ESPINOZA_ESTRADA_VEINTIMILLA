@@ -1,0 +1,1 @@
+El Articulo con Titulo='Ejemplo1',codigo del Articulo=20047, resumen='ej1', contenido='probandoMain', palabrasClave='ap', estado=SINREVISION fue sometido existosamente

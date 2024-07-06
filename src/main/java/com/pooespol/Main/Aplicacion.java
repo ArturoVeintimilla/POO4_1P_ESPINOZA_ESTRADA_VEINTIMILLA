@@ -1,6 +1,8 @@
 package com.pooespol.Main;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -92,7 +94,8 @@ public class Aplicacion {
 
         Autor autor = new Autor(codigoID, nombreAutor, apellidoAutor, correoAutor, institucion, campoInvestigacion);
         usuarios.add(autor);
-
+        //Escribe al autor en el archivo Investigadores.txt 
+        EscribirArchivo("Investigadores.txt", autor.toString());
         autor.someterArticulo(scanner, articulos,autor);
 
 
@@ -108,7 +111,7 @@ public class Aplicacion {
             System.out.println("No hay suficientes revisores disponibles para asignar a este artículo.");
             return;
         }
-    
+        
         Revisor revisor1 = disponibles.get(0);
         Revisor revisor2 = disponibles.get(1);
     
@@ -147,6 +150,7 @@ public class Aplicacion {
 
     }
     
+//RETORNA UNA LISTA DE LOS REVISORES QUE ESTAN DISPONIBLES, ES DECIR LOS REVISORES QUE NO TIENEN ASIGNADO UN ARTICULO
     private static ArrayList<Revisor>  obtenerRevisoresDisponibles() {
         ArrayList<Revisor>  disponibles = new ArrayList<>();
         for (Usuario usuario : usuarios) {
@@ -336,6 +340,32 @@ public class Aplicacion {
         }
     }
     
+    public static void EscribirArchivo(String nombreArchivo, String linea) {
+
+        FileWriter fichero = null;
+        BufferedWriter bw = null;
+      
+        try {
+            fichero = new FileWriter(nombreArchivo,true);
+            bw = new BufferedWriter(fichero);
+            bw.write(linea+"\n");
+            //System.out.println("ksdsdlsd"); verifica en consola si se escribio, descomentar si queremos comprobar
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                // Nuevamente aprovechamos el finally para 
+                // asegurarnos que se cierra el fichero.
+                if (null != fichero) {
+                    //fichero.close();
+                    bw.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+    }
 
     
 }
