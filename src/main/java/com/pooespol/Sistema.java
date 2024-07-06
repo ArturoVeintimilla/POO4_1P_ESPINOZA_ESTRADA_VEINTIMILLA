@@ -1,10 +1,76 @@
 package com.pooespol;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sistema {
+    
+    private static ArrayList<Usuario>listaUsuarios;
+
+
+    public static void Menu(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("----Bienvenido al Sistema----");
+        cargarUsuarios();
+        System.out.println("1. Iniciar Sesion");
+        System.out.println("2. Someter Articulo");
+        int opcion= sc.nextInt();
+        sc.nextLine();
+        switch (opcion) {
+            case 1:
+                iniciarSesion();
+                break;
+            case 2:
+                someterArticulo();
+            default:
+                System.out.println("Opción no válida");
+                break;
+        }
+
+    }
+
+    //ojito
+    public static void iniciarSesion(){
+        Scanner sc=new Scanner(System.in);       
+        System.out.println("Ingrese usuario: ");
+        String usuario=sc.nextLine();
+        System.out.println("Ingrese contraseña: ");
+        String contrasenia=sc.nextLine();
+        System.out.println("Validando sus datos...");
+        ArrayList<String>lineas=LeeFichero("usuarios.txt");
+
+        for(String linea:lineas){
+            String [] arrayLinea=linea.split(",");
+            if(usuario.equals(arrayLinea[0]) && contrasenia.equals(arrayLinea[1])){
+                System.out.println("Usuario verificado");
+                Usuario usr=new Editor(arrayLinea[2], arrayLinea[3], arrayLinea[4],TipoRol.E, arrayLinea[0], arrayLinea[1], arrayLinea[5]);
+                
+            }            
+        }
+    }
+
+    public static void cargarUsuarios(){
+        listaUsuarios=new ArrayList<>();
+        ArrayList<String>lineas=LeeFichero("usuarios.txt");
+        for(String linea:lineas){
+            String [] arrayLinea=linea.split(",");
+            if(arrayLinea[3].equals("A")){
+                listaUsuarios.add(new Autor(arrayLinea[0], arrayLinea[1], arrayLinea[2],TipoRol.valueOf(arrayLinea[3]), Integer.parseInt(arrayLinea[4]), arrayLinea[5],arrayLinea[6]));
+            }else if(arrayLinea[3].equals("E")){
+                listaUsuarios.add(new Editor(arrayLinea[0], arrayLinea[1], arrayLinea[2],TipoRol.valueOf(arrayLinea[3]),arrayLinea[4],arrayLinea[5],arrayLinea[6]));
+            }else {
+                listaUsuarios.add(new Revisor(arrayLinea[0], arrayLinea[1], arrayLinea[2],TipoRol.valueOf(arrayLinea[3]),arrayLinea[4],arrayLinea[5],arrayLinea[6],Integer.parseInt(arrayLinea[7])));
+            }
+        }
+
+
+    }
 
     public static void someterArticulo(){
         Scanner sc=new Scanner(System.in);
@@ -67,6 +133,45 @@ public class Sistema {
                 e2.printStackTrace();
             }
         }
+    }
+
+    public static ArrayList<String> LeeFichero(String nombrearchivo) {
+        ArrayList<String> lineas = new ArrayList<>();
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+
+        try {
+            // Apertura del fichero y creacion de BufferedReader para poder
+            // hacer una lectura comoda (disponer del metodo readLine()).
+            archivo = new File(nombrearchivo);
+            fr = new FileReader(archivo,StandardCharsets.UTF_8);
+            br = new BufferedReader(fr);
+
+            // Lectura del fichero
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+                lineas.add(linea);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // En el finally cerramos el fichero, para asegurarnos
+            // que se cierra tanto si todo va bien como si salta 
+            // una excepcion.
+            try {
+                if (null != fr) {
+                    fr.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        return lineas;
+
     }
     
 }
