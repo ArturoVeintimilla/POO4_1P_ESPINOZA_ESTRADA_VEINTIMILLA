@@ -4,6 +4,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import com.pooespol.Principales.Editor;
 import com.pooespol.Principales.Revisor;
@@ -21,7 +28,7 @@ public class Aplicacion {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        cargarUsuariosDesdeArchivo("C:\\Users\\Estra\\ProtitpoPoo\\demo\\src\\main\\java\\com\\espol\\usuarios.txt"); // Cargar datos de usuarios desde archivo
+        cargarUsuariosDesdeArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\usuarios.txt"); // Cargar datos de usuarios desde archivo
 
 
         System.out.println("\nBienvenido al sistema de gestión de artículos científicos");
@@ -37,10 +44,8 @@ public class Aplicacion {
                 case 2:
                     iniciarSesion();
                     break;
-               case 3:
-                    verEstadoArticulo();
-                    break;
-                case 4:
+        
+                case 3:
                     System.out.println("Saliendo del sistema.");
                     return;
                 default:
@@ -53,8 +58,7 @@ public class Aplicacion {
         System.out.println("\nOpciones disponibles:");
         System.out.println("1. Someter artículo");
         System.out.println("2. Iniciar sesión");
-        System.out.println("3. Ver Estado de Articulo");
-        System.out.println("4. Salir");
+        System.out.println("3. Salir");
         System.out.print("Ingrese la opción deseada: ");
     }
 
@@ -135,8 +139,53 @@ public class Aplicacion {
             System.out.println("No hay editores disponibles para asignar a este artículo.");
         }
     
-        // Simulación de envío de correo a los revisores y al editor (debería implementarse)
-        System.out.println("Se ha enviado un correo a los revisores y al editor asignados.");
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+    
+        // Autenticación
+        String username = "pooproyecto7@gmail.com";
+        String password = "vqtz eryx ukur tfqs";
+    
+        // Crear la sesión
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                return new javax.mail.PasswordAuthentication(username, password);
+            }
+        });
+    
+        try {
+            // Crear el mensaje para los revisores
+            Message messageToRevisores = new MimeMessage(session);
+            messageToRevisores.setFrom(new InternetAddress("pooproyecto7@gmail.com"));
+            messageToRevisores.setRecipients(Message.RecipientType.TO, 
+                    InternetAddress.parse(revisor1.getCorreo() + "," + revisor2.getCorreo()));
+            messageToRevisores.setSubject("Nuevo artículo asignado para revisión");
+            messageToRevisores.setText("Estimado revisor,\n\nSe les ha asignado el artículo \"" 
+                    + articulo.getTitulo() + "\" para revisión. Por favor, revisen su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
+    
+            // Enviar el mensaje a los revisores
+            Transport.send(messageToRevisores);
+            System.out.println("Correo enviado exitosamente a los revisores.");
+    
+            // Crear el mensaje para el editor
+            Message messageToEditor = new MimeMessage(session);
+            messageToEditor.setFrom(new InternetAddress("pooproyecto7@gmail.com"));
+            messageToEditor.setRecipients(Message.RecipientType.TO, 
+                    InternetAddress.parse(articulo.getEditor().getCorreo()));
+            messageToEditor.setSubject("Nuevo artículo asignado para revisión");
+            messageToEditor.setText("Estimado editor,\n\nSe le ha asignado el artículo \"" 
+                    + articulo.getTitulo() + "\" para revisión. Por favor, revise su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
+    
+            // Enviar el mensaje al editor
+            Transport.send(messageToEditor);
+            System.out.println("Correo enviado exitosamente al editor.");
+    
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
     
     private static ArrayList<Revisor>  obtenerRevisoresDisponibles() {
