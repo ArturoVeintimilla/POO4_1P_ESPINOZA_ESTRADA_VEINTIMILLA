@@ -32,10 +32,10 @@ public class Autor extends Usuario {
 
     @Override
     public String toString() {
-        return "Autor{" + super.toString()+
+        return  super.toString()+
                 ", institucion='" + institucion + '\'' +
                 ", campoInvestigacion='" + campoInvestigacion + '\'' +
-                '}';
+                ' ';
     }
 
     public void someterArticulo(Scanner scanner, ArrayList<Articulo> articulos,Autor autor) {
@@ -59,7 +59,7 @@ public class Autor extends Usuario {
         articulos.add(articulo);
         
         //Escribe al articulo en el archivo Articulos.txt 
-        Aplicacion.EscribirArchivo("Articulos.txt", articulo.toString());
+        Aplicacion.escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Articulos.txt", articulo.toString());
 
         System.out.println(articulo.toString());
     }

@@ -1,0 +1,2 @@
+--------------Articulos----------------------
+El Articulo con Titulo='Robots y su futuro',codigo del Articulo=30017, resumen='los robots tienen presencia actualmente', contenido='robots', palabrasClave='mecanizar', estado=SINREVISION fue sometido existosamente

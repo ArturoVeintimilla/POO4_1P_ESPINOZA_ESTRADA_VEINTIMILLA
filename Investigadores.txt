@@ -1,1 +1,0 @@
-Autor{Usuario{nombre='Arturo', apellido='Veintimilla', correo='arturo@example.com'}, institucion='Espol', campoInvestigacion='Ciencias'}

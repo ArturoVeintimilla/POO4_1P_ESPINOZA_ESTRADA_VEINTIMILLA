@@ -94,10 +94,9 @@ public class Aplicacion {
 
         Autor autor = new Autor(codigoID, nombreAutor, apellidoAutor, correoAutor, institucion, campoInvestigacion);
         usuarios.add(autor);
-        //Escribe al autor en el archivo Investigadores.txt 
-        EscribirArchivo("Investigadores.txt", autor.toString());
-        autor.someterArticulo(scanner, articulos,autor);
 
+        autor.someterArticulo(scanner, articulos,autor);
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Investigadores.txt", "Investigador: "+autor.toString());
 
         // Asignar revisores al artículo recién sometido
         Articulo articuloReciente = articulos.get(articulos.size() - 1);
@@ -111,7 +110,7 @@ public class Aplicacion {
             System.out.println("No hay suficientes revisores disponibles para asignar a este artículo.");
             return;
         }
-        
+    
         Revisor revisor1 = disponibles.get(0);
         Revisor revisor2 = disponibles.get(1);
     
@@ -150,7 +149,6 @@ public class Aplicacion {
 
     }
     
-//RETORNA UNA LISTA DE LOS REVISORES QUE ESTAN DISPONIBLES, ES DECIR LOS REVISORES QUE NO TIENEN ASIGNADO UN ARTICULO
     private static ArrayList<Revisor>  obtenerRevisoresDisponibles() {
         ArrayList<Revisor>  disponibles = new ArrayList<>();
         for (Usuario usuario : usuarios) {
@@ -206,7 +204,7 @@ public class Aplicacion {
         if (usuarioEncontrado != null) {
             System.out.println("\nInicio de sesión exitoso como " + tipo + ": " + usuarioEncontrado.getNombre() + " " + usuarioEncontrado.getApellido());
             if (usuarioEncontrado instanceof Editor) {
-                Editor editor = (Editor) usuarioEncontrado; //Downcasting
+                Editor editor = (Editor) usuarioEncontrado;
                 editor.tareaAsignada();
                 verEstadoArticulo();
             } else if (usuarioEncontrado instanceof Revisor) {
@@ -251,7 +249,7 @@ public class Aplicacion {
         sc.nextLine();
     }
 
-    private static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
+   private static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
@@ -259,7 +257,7 @@ public class Aplicacion {
         props.put("mail.smtp.starttls.enable", "true");
     
         // Autenticación
-        String username = "proyectopoo7@gmail.com";
+        String username = "pooproyecto7@gmail.com";
         String password = "vqtz eryx ukur tfqs";
 
         // Crear la sesión
@@ -285,6 +283,15 @@ public class Aplicacion {
             throw new RuntimeException(e);
         }
     }
+     public static void escribirArchivo(String nombreArchivo, String contenido) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
+            writer.write(contenido);
+            writer.newLine();
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo " + nombreArchivo);
+            e.printStackTrace();
+        }
+    } 
 
     private static void cargarUsuariosDesdeArchivo(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
@@ -304,16 +311,18 @@ public class Aplicacion {
                         case "Autor":
                             if (datos.length >= 9) {
                                 String institucion = datos[7].trim();
-                                String campoInvestigacion = datos[8].trim();    
-                                usuarios.add(new Autor(codigoID, nombre, apellido, correo, institucion, campoInvestigacion));
+                                String campoInvestigacion = datos[8].trim();
+                                Autor autor = new Autor(codigoID, nombre, apellido, correo, institucion, campoInvestigacion);
+                                usuarios.add(autor);
                             } else {
                                 System.out.println("Error en el formato de línea para Autor: " + linea);
                             }
                             break;
                         case "Revisor":
                             if (datos.length >= 8) {
-                                String especialidad = datos[7].trim();                      
-                                usuarios.add(new Revisor(nombre, apellido, correo, acceso, contrasena, especialidad));
+                                String especialidad = datos[7].trim();
+                                Revisor revisor = new Revisor(nombre, apellido, correo, acceso, contrasena, especialidad);
+                                usuarios.add(revisor);
                             } else {
                                 System.out.println("Error en el formato de línea para Revisor: " + linea);
                             }
@@ -321,7 +330,8 @@ public class Aplicacion {
                         case "Editor":
                             if (datos.length >= 8) {
                                 String nombreJournal = datos[7].trim();
-                                usuarios.add(new Editor(nombre, apellido, correo, acceso, contrasena, nombreJournal));
+                                Editor editor = new Editor(nombre, apellido, correo, acceso, contrasena, nombreJournal);
+                                usuarios.add(editor);
                             } else {
                                 System.out.println("Error en el formato de línea para Editor: " + linea);
                             }
@@ -340,32 +350,6 @@ public class Aplicacion {
         }
     }
     
-    public static void EscribirArchivo(String nombreArchivo, String linea) {
-
-        FileWriter fichero = null;
-        BufferedWriter bw = null;
-      
-        try {
-            fichero = new FileWriter(nombreArchivo,true);
-            bw = new BufferedWriter(fichero);
-            bw.write(linea+"\n");
-            //System.out.println("ksdsdlsd"); verifica en consola si se escribio, descomentar si queremos comprobar
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                // Nuevamente aprovechamos el finally para 
-                // asegurarnos que se cierra el fichero.
-                if (null != fichero) {
-                    //fichero.close();
-                    bw.close();
-                }
-            } catch (Exception e2) {
-                e2.printStackTrace();
-            }
-        }
-    }
 
     
 }

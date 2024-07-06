@@ -1,0 +1,2 @@
+---------------Investigadores---------------------------
+Investigador: Nombre='Roberto', apellido='Estrada', correo='raestrad@espol.edu.ec' , institucion='ESPOL', campoInvestigacion='Mecatronica' 
