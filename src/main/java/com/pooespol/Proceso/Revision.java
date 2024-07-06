@@ -42,8 +42,7 @@ public class Revision {
         this.articulo = articulo;
     }
 
-
-
+    
     public void resultadoRevision() {
         if (editor.getDecision()) {
             articulo.setEstado(EstadoArticulo.PUBLICADO);
