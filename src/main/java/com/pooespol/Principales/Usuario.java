@@ -26,6 +26,8 @@ public abstract class Usuario {
 
     public abstract void tareaAsignada();
 
+    //Revisar: public abstract Correo generarCorreo();
+
     @Override
     public String toString() {
         return "Usuario{" +

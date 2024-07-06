@@ -65,6 +65,7 @@ public class Editor extends Usuario {
         }
     }
     
+    @Override
     public void tareaAsignada() {
         System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);
         this.decision=tomarDecision(ArticuloAsignado);

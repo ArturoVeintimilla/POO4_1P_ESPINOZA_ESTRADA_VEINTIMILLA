@@ -59,6 +59,8 @@ public class Autor extends Usuario {
 
         System.out.println(articulo.toString());
     }
+
+    //COMPLETAR
     public void tareaAsignada(){
         
     }

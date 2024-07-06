@@ -88,6 +88,7 @@ public class Revisor extends Usuario {
         }
     }
 
+    @Override
     public void tareaAsignada() {
         if (articuloAsignado != null) {
             System.out.println("Revisión de artículo asignada: " + articuloAsignado.getTitulo());

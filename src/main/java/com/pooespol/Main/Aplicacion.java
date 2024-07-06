@@ -202,7 +202,7 @@ public class Aplicacion {
         if (usuarioEncontrado != null) {
             System.out.println("\nInicio de sesión exitoso como " + tipo + ": " + usuarioEncontrado.getNombre() + " " + usuarioEncontrado.getApellido());
             if (usuarioEncontrado instanceof Editor) {
-                Editor editor = (Editor) usuarioEncontrado;
+                Editor editor = (Editor) usuarioEncontrado; //Downcasting
                 editor.tareaAsignada();
                 verEstadoArticulo();
             } else if (usuarioEncontrado instanceof Revisor) {
@@ -300,18 +300,16 @@ public class Aplicacion {
                         case "Autor":
                             if (datos.length >= 9) {
                                 String institucion = datos[7].trim();
-                                String campoInvestigacion = datos[8].trim();
-                                Autor autor = new Autor(codigoID, nombre, apellido, correo, institucion, campoInvestigacion);
-                                usuarios.add(autor);
+                                String campoInvestigacion = datos[8].trim();    
+                                usuarios.add(new Autor(codigoID, nombre, apellido, correo, institucion, campoInvestigacion));
                             } else {
                                 System.out.println("Error en el formato de línea para Autor: " + linea);
                             }
                             break;
                         case "Revisor":
                             if (datos.length >= 8) {
-                                String especialidad = datos[7].trim();
-                                Revisor revisor = new Revisor(nombre, apellido, correo, acceso, contrasena, especialidad);
-                                usuarios.add(revisor);
+                                String especialidad = datos[7].trim();                      
+                                usuarios.add(new Revisor(nombre, apellido, correo, acceso, contrasena, especialidad));
                             } else {
                                 System.out.println("Error en el formato de línea para Revisor: " + linea);
                             }
@@ -319,8 +317,7 @@ public class Aplicacion {
                         case "Editor":
                             if (datos.length >= 8) {
                                 String nombreJournal = datos[7].trim();
-                                Editor editor = new Editor(nombre, apellido, correo, acceso, contrasena, nombreJournal);
-                                usuarios.add(editor);
+                                usuarios.add(new Editor(nombre, apellido, correo, acceso, contrasena, nombreJournal));
                             } else {
                                 System.out.println("Error en el formato de línea para Editor: " + linea);
                             }
