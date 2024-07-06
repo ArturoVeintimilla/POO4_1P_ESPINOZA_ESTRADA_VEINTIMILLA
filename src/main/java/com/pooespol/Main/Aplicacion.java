@@ -117,6 +117,10 @@ public class Aplicacion {
         System.out.println("Revisores asignados automáticamente:");
         System.out.println("- " + revisor1.getNombre());
         System.out.println("- " + revisor2.getNombre());
+
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Revisores.txt", revisor1.toString());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Revisores.txt", revisor2.toString());
+
     
         // Asignar artículo a los revisores
         revisor1.setArticuloAsignados(articulo);
