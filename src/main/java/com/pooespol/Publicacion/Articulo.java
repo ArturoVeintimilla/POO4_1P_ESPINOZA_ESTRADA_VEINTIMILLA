@@ -7,6 +7,7 @@ import com.pooespol.Principales.Revisor;
 import com.pooespol.Tipos.EstadoArticulo;
 
 public class Articulo {
+    private Autor autor;
     private int codigoArticulo;
     private String titulo;
     private String resumen;
@@ -16,7 +17,7 @@ public class Articulo {
     private ArrayList<Revisor> revisores;
     private Editor editor;
 
-    public Articulo(int codigoArticulo, String titulo, String resumen, String contenido, String palabrasClave) {
+    public Articulo(Autor autor ,int codigoArticulo, String titulo, String resumen, String contenido, String palabrasClave) {
         this.codigoArticulo = codigoArticulo;
         this.titulo = titulo;
         this.resumen = resumen;
@@ -25,6 +26,9 @@ public class Articulo {
         this.revisores = new ArrayList<>();
         this.editor = null; // Inicialmente no tiene editor asignado
         this.estado=EstadoArticulo.SINREVISION;
+    }
+    public Autor getAutor() {
+        return autor;
     }
 
     public int getCodigoArticulo() {

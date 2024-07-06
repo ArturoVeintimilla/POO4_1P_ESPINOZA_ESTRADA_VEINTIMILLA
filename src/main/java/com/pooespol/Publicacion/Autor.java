@@ -37,7 +37,7 @@ public class Autor extends Usuario {
                 '}';
     }
 
-    public void someterArticulo(Scanner scanner, ArrayList<Articulo> articulos) {
+    public void someterArticulo(Scanner scanner, ArrayList<Articulo> articulos,Autor autor) {
         // Registrar datos del artículo
         System.out.println("\nRegistro de datos del artículo:");
         System.out.print("Título: ");
@@ -54,7 +54,7 @@ public class Autor extends Usuario {
         int i= r.nextInt(50);
         int codigoArticulo = codigoID + 1*i; // Ejemplo simple de generación de código único
 
-        Articulo articulo = new Articulo(codigoArticulo, tituloArticulo, resumenArticulo, contenidoArticulo, palabrasClaveArticulo);
+        Articulo articulo = new Articulo(autor,codigoArticulo, tituloArticulo, resumenArticulo, contenidoArticulo, palabrasClaveArticulo);
         articulos.add(articulo);
 
         System.out.println(articulo.toString());

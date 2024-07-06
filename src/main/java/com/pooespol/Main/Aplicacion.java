@@ -93,7 +93,7 @@ public class Aplicacion {
         Autor autor = new Autor(codigoID, nombreAutor, apellidoAutor, correoAutor, institucion, campoInvestigacion);
         usuarios.add(autor);
 
-        autor.someterArticulo(scanner, articulos);
+        autor.someterArticulo(scanner, articulos,autor);
 
 
         // Asignar revisores al artículo recién sometido
@@ -138,54 +138,13 @@ public class Aplicacion {
         } else {
             System.out.println("No hay editores disponibles para asignar a este artículo.");
         }
-    
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-    
-        // Autenticación
-        String username = "pooproyecto7@gmail.com";
-        String password = "vqtz eryx ukur tfqs";
-    
-        // Crear la sesión
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                return new javax.mail.PasswordAuthentication(username, password);
-            }
-        });
-    
-        try {
-            // Crear el mensaje para los revisores
-            Message messageToRevisores = new MimeMessage(session);
-            messageToRevisores.setFrom(new InternetAddress("pooproyecto7@gmail.com"));
-            messageToRevisores.setRecipients(Message.RecipientType.TO, 
-                    InternetAddress.parse(revisor1.getCorreo() + "," + revisor2.getCorreo()));
-            messageToRevisores.setSubject("Nuevo artículo asignado para revisión");
-            messageToRevisores.setText("Estimado revisor,\n\nSe les ha asignado el artículo \"" 
-                    + articulo.getTitulo() + "\" para revisión. Por favor, revisen su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
-    
-            // Enviar el mensaje a los revisores
-            Transport.send(messageToRevisores);
-            System.out.println("Correo enviado exitosamente a los revisores.");
-    
-            // Crear el mensaje para el editor
-            Message messageToEditor = new MimeMessage(session);
-            messageToEditor.setFrom(new InternetAddress("pooproyecto7@gmail.com"));
-            messageToEditor.setRecipients(Message.RecipientType.TO, 
-                    InternetAddress.parse(articulo.getEditor().getCorreo()));
-            messageToEditor.setSubject("Nuevo artículo asignado para revisión");
-            messageToEditor.setText("Estimado editor,\n\nSe le ha asignado el artículo \"" 
-                    + articulo.getTitulo() + "\" para revisión. Por favor, revise su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
-    
-            // Enviar el mensaje al editor
-            Transport.send(messageToEditor);
-            System.out.println("Correo enviado exitosamente al editor.");
-    
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
+        enviarCorreo(revisor1.getCorreo(), "Nuevo artículo asignado para revisión", "Estimado revisor,\n\nSe les ha asignado el artículo \"" 
+        + articulo.getTitulo() + "\" para revisión. Por favor, revisen su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
+        enviarCorreo(revisor2.getCorreo(), "Nuevo artículo asignado para revisión", "Estimado revisor,\n\nSe les ha asignado el artículo \"" 
+        + articulo.getTitulo() + "\" para revisión. Por favor, revisen su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
+       enviarCorreo(articulo.getEditor().getCorreo(), "Nuevo artículo asignado para revisión", "Estimado editor,\n\nSe le ha asignado el artículo \"" 
+        + articulo.getTitulo() + "\" para revisión. Por favor, revise su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
+
     }
     
     private static ArrayList<Revisor>  obtenerRevisoresDisponibles() {
@@ -245,6 +204,7 @@ public class Aplicacion {
             if (usuarioEncontrado instanceof Editor) {
                 Editor editor = (Editor) usuarioEncontrado;
                 editor.tareaAsignada();
+                verEstadoArticulo();
             } else if (usuarioEncontrado instanceof Revisor) {
                 Revisor revisor = (Revisor) usuarioEncontrado;
                 revisor.tareaAsignada();
@@ -273,7 +233,7 @@ public class Aplicacion {
                 ArrayList<Revisor> revisores = articulo.getRevisores();
                 Editor editor = articulo.getEditor();
                 Revision r= new Revision(articulo, revisores.get(0),revisores.get(1),editor);
-                r.imprimirRevision();
+                enviarCorreo(articulo.getAutor().getCorreo(), "La revision ha concluido, aqui su informe con respecto a la misma.", r.imprimirRevision());
                 encontrado = true;
                 break;
             }
@@ -287,7 +247,40 @@ public class Aplicacion {
         sc.nextLine();
     }
 
+    private static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
     
+        // Autenticación
+        String username = "proyectopoo7@gmail.com";
+        String password = "vqtz eryx ukur tfqs";
+
+        // Crear la sesión
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                return new javax.mail.PasswordAuthentication(username, password);
+            }
+        });
+    
+        try {
+            // Crear el mensaje
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
+            message.setSubject(asunto);
+            message.setText(cuerpo);
+    
+            // Enviar el mensaje
+            Transport.send(message);
+    
+            System.out.println("Correo enviado exitosamente a " + destinatario);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private static void cargarUsuariosDesdeArchivo(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {

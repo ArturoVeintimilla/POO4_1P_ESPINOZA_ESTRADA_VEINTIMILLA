@@ -55,26 +55,21 @@ public class Revision {
     }
     
 
-    public void imprimirRevision() {
-        if(revisor1.getComentarios()!= null && revisor2.getComentarios()!=null){
-            System.out.println("=== Información de la Revisión ===");
-            System.out.println("Articulo: " + articulo.getTitulo() + " (ID: " + articulo.getCodigoArticulo() + ")");
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("Revisor 1: " + revisor1.getNombre() + " " + revisor1.getApellido());
-            System.out.println("Comentarios Revisor 1: " + revisor1.getComentarios());
-            System.out.println("Decisión Revisor 1: " + revisor1.getDecision());
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("Revisor 2: " + revisor2.getNombre() + " " + revisor2.getApellido());
-            System.out.println("Comentarios Revisor 2: " + revisor2.getComentarios());
-            System.out.println("Decisión Revisor 2: " + revisor2.getDecision());
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("Decisión Editor: " + editor.getDecision());
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("Estado del Artículo: " + articulo.getEstado());
-            resultadoRevision();
-        }
-        else{
-            System.out.println(" El articulo: "+ articulo.getTitulo()+ " sigue en proceso de revision");
-        }
+    public String imprimirRevision() {
+        String informe = "=== Información de la Revisión ===\n" +
+            "Artículo: " + articulo.getTitulo() + " (ID: " + articulo.getCodigoArticulo() + ")\n" +
+            "------------------------------------------------------------------\n" +
+            "Revisor 1: " + revisor1.getNombre() + " " + revisor1.getApellido() + "\n" +
+            "Comentarios Revisor 1: " + revisor1.getComentarios() + "\n" +
+            "Decisión Revisor 1: " + revisor1.getDecision() + "\n" +
+            "------------------------------------------------------------------\n" +
+            "Revisor 2: " + revisor2.getNombre() + " " + revisor2.getApellido() + "\n" +
+            "Comentarios Revisor 2: " + revisor2.getComentarios() + "\n" +
+            "Decisión Revisor 2: " + revisor2.getDecision() + "\n" +
+            "------------------------------------------------------------------\n" +
+            "Decisión Editor: " + editor.getDecision() + "\n" +
+            "------------------------------------------------------------------\n" +
+            "Estado del Artículo: " + articulo.getEstado() + "\n";
+        return informe;
     }
 }
