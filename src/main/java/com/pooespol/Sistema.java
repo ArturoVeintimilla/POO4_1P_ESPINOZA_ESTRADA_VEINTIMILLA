@@ -43,13 +43,14 @@ public class Sistema {
         System.out.println("Ingrese contraseña: ");
         String contrasenia=sc.nextLine();
         System.out.println("Validando sus datos...");
-        ArrayList<String>lineas=LeeFichero("usuarios.txt");
-
-        for(String linea:lineas){
-            String [] arrayLinea=linea.split(",");
-            if(usuario.equals(arrayLinea[0]) && contrasenia.equals(arrayLinea[1])){
+        
+        Usuario usr2 = new Usuario(" ", " ", " ", TipoRol.U, usuario, contrasenia);
+        
+        for(Usuario u :listaUsuarios){
+            if(listaUsuarios.contains(usr2)){
                 System.out.println("Usuario verificado");
-                Usuario usr=new Editor(arrayLinea[2], arrayLinea[3], arrayLinea[4],TipoRol.E, arrayLinea[0], arrayLinea[1], arrayLinea[5]);
+
+                
                 
             }            
         }
@@ -61,7 +62,7 @@ public class Sistema {
         for(String linea:lineas){
             String [] arrayLinea=linea.split(",");
             if(arrayLinea[3].equals("A")){
-                listaUsuarios.add(new Autor(arrayLinea[0], arrayLinea[1], arrayLinea[2],TipoRol.valueOf(arrayLinea[3]), Integer.parseInt(arrayLinea[4]), arrayLinea[5],arrayLinea[6]));
+                listaUsuarios.add(new Autor(arrayLinea[0], arrayLinea[1], arrayLinea[2],TipoRol.valueOf(arrayLinea[3]),arrayLinea[4],arrayLinea[5], Integer.parseInt(arrayLinea[6]), arrayLinea[7],arrayLinea[8]));
             }else if(arrayLinea[3].equals("E")){
                 listaUsuarios.add(new Editor(arrayLinea[0], arrayLinea[1], arrayLinea[2],TipoRol.valueOf(arrayLinea[3]),arrayLinea[4],arrayLinea[5],arrayLinea[6]));
             }else {
@@ -85,7 +86,7 @@ public class Sistema {
         String institucion=sc.nextLine();
         System.out.println("Ingrese su campo de investigacion:");
         String campoInvestigacion=sc.nextLine();
-        Autor autor1=new Autor(nombre, apellido, correo, TipoRol.A, 0, institucion, campoInvestigacion);
+        Autor autor1=new Autor(nombre, apellido, correo,TipoRol.A,"noNecesita","noTiene", 0, institucion, campoInvestigacion);
         String datosAutor= autor1.toString(); 
         Sistema.EscribirArchivo("autores.txt", datosAutor);
         System.out.println("");

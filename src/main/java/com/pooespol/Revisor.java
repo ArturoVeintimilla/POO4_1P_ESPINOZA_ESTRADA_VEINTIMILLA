@@ -1,38 +1,20 @@
 package com.pooespol;
 
 public class Revisor extends Usuario {
-    private String usuario;
-    private String contrasenia;
     private String especialidad;
     private int numeroArticulo;
 
     //Constructores
-    public Revisor(String usuario, String contrasenia, String especialidad, int numeroArticulo ,String nombre, String apellido, String correo,TipoRol rol){
-        super(nombre,apellido,correo,TipoRol.R);
-        this.usuario = usuario;
-        this.contrasenia = contrasenia;
+    public Revisor(String nombre, String apellido, String correo,TipoRol rol,String usuario, String contrasenia, String especialidad, int numeroArticulo){
+        super(nombre,apellido,correo,TipoRol.R,usuario,contrasenia);
         this.especialidad = especialidad;
         this.numeroArticulo = numeroArticulo;
 
     }
 
 
+
     //getters and setters
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getContrasenia() {
-        return contrasenia;
-    }
-
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
 
     public String getEspecialidad() {
         return especialidad;

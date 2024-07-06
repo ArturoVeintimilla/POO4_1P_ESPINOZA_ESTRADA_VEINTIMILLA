@@ -5,8 +5,8 @@ public class Autor extends Usuario {
    private String institucion;
    private String cInvest;
 
-   public Autor(String nombre, String apellido, String correo, TipoRol rol, int codigoID, String institucion, String cInvest){
-        super(nombre, apellido, correo, TipoRol.A);
+   public Autor(String nombre, String apellido, String correo, TipoRol rol, String usuario, String contrasenia, int codigoID, String institucion, String cInvest){
+        super(nombre, apellido, correo, TipoRol.A,"noNecesita","noTiene");
         this.codigoID=codigoID;
         this.institucion=institucion;
         this.cInvest=cInvest;

@@ -2,16 +2,12 @@ package com.pooespol;
 import java.util.Scanner;
 public class Editor extends Usuario {
     private Articulo articulo;
-    private String usuario;
-    private String contraseña;
     private String nombreJournal;
     
 
 
-    public Editor(String nombre, String apellido, String correo, TipoRol rol, String usuario, String contraseña, String nombreJournal){
-        super(nombre, apellido, correo, TipoRol.E);
-        this.usuario=usuario;
-        this.contraseña= contraseña;
+    public Editor(String nombre, String apellido, String correo, TipoRol rol, String usuario, String contrasenia, String nombreJournal){
+        super(nombre, apellido, correo, TipoRol.E,usuario,contrasenia);
         this.nombreJournal= nombreJournal;     
     }
 
@@ -35,24 +31,14 @@ public class Editor extends Usuario {
     public Articulo getArticulo(){
         return articulo;
     }
-    public String getUsuario(){
-        return usuario;
-    }
-    public String getContraseña(){
-        return contraseña;
-    }
+    
     public String getNombreJournal(){
         return nombreJournal;
     }
     public void setArticulo(Articulo articulo){
         this.articulo=articulo;
     }
-    public void setUsuario(String usuario){
-        this.usuario=usuario;
-    }
-    public void setContraseña(String contraseña){
-        this.contraseña=contraseña;
-    }
+    
     public void setNombreJournal(String nombreJournal){
         this.nombreJournal=nombreJournal;
     }
