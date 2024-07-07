@@ -370,6 +370,7 @@ public class Aplicacion {
 
     private static void cargarArticulos(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            br.readLine();
             String linea;
             while ((linea = br.readLine()) != null) {
                 // Procesar la línea para extraer la información necesaria
@@ -395,6 +396,8 @@ public class Aplicacion {
                 String[] nombreEditorPartes = nombreCompletoEditor.split(" ");
                 String nombreEditor = nombreEditorPartes[0].trim();
                 String apellidoEditor = nombreEditorPartes[1].trim();
+                
+                
     
                 // Buscar el autor, revisores y editor en la lista de usuarios
                 Autor autor = (Autor) obtenerUsuarioPorNombre(nombreAutor, apellidoAutor);
@@ -415,9 +418,10 @@ public class Aplicacion {
                 articulos.add(articulo);
                 revisor1.setArticuloAsignados(articulo);
                 revisor2.setArticuloAsignados(articulo);
-                ArrayList<Articulo> articulos = editor.getArticulosAsignado();
+                ArrayList<Articulo> articulos=editor.getArticulosAsignado();
                 articulos.add(articulo);
                 editor.setArticuloAsignados(articulos);
+                
     
                 System.out.println("Artículo cargado: " + titulo);
             }
@@ -427,7 +431,6 @@ public class Aplicacion {
             System.out.println("Error de formato numérico en el archivo: " + e.getMessage());
         }
     }
-    
     
     private static Usuario obtenerUsuarioPorNombre(String nombre, String apellido) {
         for (Usuario usuario : usuarios) {
