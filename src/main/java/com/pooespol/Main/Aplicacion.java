@@ -97,6 +97,7 @@ public class Aplicacion {
         usuarios.add(autor);
 
         autor.someterArticulo(scanner, articulos,autor);
+        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt", "Autor,"+(usuarios.size()+1)+autor.getNombre()+","+autor.getApellido()+","+autor.getCorreo()+","+autor.getInstitucion()+","+autor.getCampoInvestigacion());
         escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
 
         // Asignar revisores al artículo recién sometido
@@ -322,14 +323,12 @@ public class Aplicacion {
                     String nombre = datos[2].trim();
                     String apellido = datos[3].trim();
                     String correo = datos[4].trim();
-                    String acceso = datos[5].trim();
-                    String contrasena = datos[6].trim();
     
                     switch (tipoUsuario) {
                         case "Autor":
                             if (datos.length >= 9) {
-                                String institucion = datos[7].trim();
-                                String campoInvestigacion = datos[8].trim();
+                                String institucion = datos[5].trim();
+                                String campoInvestigacion = datos[6].trim();
                                 Autor autor = new Autor(codigoID, nombre, apellido, correo, institucion, campoInvestigacion);
                                 usuarios.add(autor);
                             } else {
@@ -338,6 +337,8 @@ public class Aplicacion {
                             break;
                         case "Revisor":
                             if (datos.length >= 8) {
+                                String acceso = datos[5].trim();
+                                String contrasena = datos[6].trim();
                                 String especialidad = datos[7].trim();
                                 Revisor revisor = new Revisor(nombre, apellido, correo, acceso, contrasena, especialidad);
                                 usuarios.add(revisor);
@@ -347,6 +348,8 @@ public class Aplicacion {
                             break;
                         case "Editor":
                             if (datos.length >= 8) {
+                                String acceso = datos[5].trim();
+                                String contrasena = datos[6].trim();
                                 String nombreJournal = datos[7].trim();
                                 Editor editor = new Editor(nombre, apellido, correo, acceso, contrasena, nombreJournal);
                                 usuarios.add(editor);
@@ -401,10 +404,6 @@ public class Aplicacion {
     
                 // Buscar el autor, revisores y editor en la lista de usuarios
                 Autor autor = (Autor) obtenerUsuarioPorNombre(nombreAutor, apellidoAutor);
-                if (autor == null) {
-                    System.out.println("Error: Autor no encontrado para el artículo " + titulo);
-                    continue; // Saltar este artículo si no se encuentra el autor
-                }
                 Revisor revisor1 = (Revisor) obtenerUsuarioPorNombre(nombreRevisor1, apellidoRevisor1);
                 Revisor revisor2 = (Revisor) obtenerUsuarioPorNombre(nombreRevisor2, apellidoRevisor2);
                 Editor editor = (Editor) obtenerUsuarioPorNombre(nombreEditor, apellidoEditor);
@@ -443,31 +442,42 @@ public class Aplicacion {
     private static void procesarComentariosDecisiones(String nombreArchivo, int idArticulo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
-            boolean procesarSiguiente = false;
+            boolean encontrado = false;
             
             while ((linea = br.readLine()) != null) {
                 if (linea.startsWith("Articulo:")) {
                     String[] partes = linea.split(", ");
-                    String nombreRevisor= partes[0].split(" ")[0].trim();
                     int id = Integer.parseInt(partes[0].split(":")[1].trim());
-                    for(Articulo a: articulos){
-                        if (id == a.getCodigoArticulo()) {
-                           for(Revisor revisor: a.getRevisores()){
-                                if(revisor.getNombre().equals(nombreRevisor)){
-                                    String decision = partes[1].split(":")[1].trim();
-                                    boolean decisionRevisor = Boolean.parseBoolean(decision);
-                                    revisor.setdecision(decisionRevisor);
-                                    String comentarios = partes[2].split(":")[1].trim();
-                                    revisor.agregarComentarios(comentarios);
-                                    procesarSiguiente = true; // Marcar que se procesó una línea válida para este artículo
+                    
+                    if (id == idArticulo) {
+                        String nombreRevisor = partes[0].split(" ")[1].trim();
+                        boolean decisionRevisor = Boolean.parseBoolean(partes[1].split(":")[1].trim());
+                        String comentarios = partes[2].split(":")[1].trim();
+                        
+                        // Buscar el revisor por nombre y actualizar su decisión y comentarios
+                        for (Articulo a : articulos) {
+                            if (a.getCodigoArticulo() == idArticulo) {
+                                for (Revisor revisor : a.getRevisores()) {
+                                    if (revisor.getNombre().equals(nombreRevisor)) {
+                                        revisor.setdecision(decisionRevisor);
+                                        revisor.agregarComentarios(comentarios);
+                                        encontrado = true;
+                                        break;
+                                    }
+                                }
+                                if (encontrado) {
+                                    break;
                                 }
                             }
-                        } else {
-                            procesarSiguiente = false; // Resetear si el artículo no es el buscado
                         }
                     }
-
                 }
+            }
+            
+            if (!encontrado) {
+                System.out.println("No se encontraron comentarios y decisiones para el artículo con ID " + idArticulo);
+            } else {
+                System.out.println("Comentarios y decisiones procesados correctamente para el artículo con ID " + idArticulo);
             }
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
