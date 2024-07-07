@@ -216,7 +216,8 @@ public class Aplicacion {
                 Editor editor = (Editor) usuarioEncontrado;
                 System.out.println("Ingrese el id del articulo");
                 int idArticulo=sc.nextInt();
-                sc.nextLine();          
+                sc.nextLine();
+                procesarComentariosDecisiones("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
                 editor.tareaAsignada(idArticulo);
                 editor.guardarComentarios(editor, idArticulo);
                 verEstadoArticulo(idArticulo);
@@ -434,6 +435,41 @@ public class Aplicacion {
             }
         }
         return null;
+    }
+    private static void procesarComentariosDecisiones(String nombreArchivo, int idArticulo) {
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            String linea;
+            boolean procesarSiguiente = false;
+            
+            while ((linea = br.readLine()) != null) {
+                if (linea.startsWith("Articulo:")) {
+                    String[] partes = linea.split(", ");
+                    String nombreRevisor= partes[0].split(" ")[0].trim();
+                    int id = Integer.parseInt(partes[0].split(":")[1].trim());
+                    for(Articulo a: articulos){
+                        if (id == a.getCodigoArticulo()) {
+                           for(Revisor revisor: a.getRevisores()){
+                                if(revisor.getNombre().equals(nombreRevisor)){
+                                    String decision = partes[1].split(":")[1].trim();
+                                    boolean decisionRevisor = Boolean.parseBoolean(decision);
+                                    revisor.setdecision(decisionRevisor);
+                                    String comentarios = partes[2].split(":")[1].trim();
+                                    revisor.agregarComentarios(comentarios);
+                                    procesarSiguiente = true; // Marcar que se procesó una línea válida para este artículo
+                                }
+                            }
+                        } else {
+                            procesarSiguiente = false; // Resetear si el artículo no es el buscado
+                        }
+                    }
+
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error de formato numérico en el archivo: " + e.getMessage());
+        }
     }
     
 }
