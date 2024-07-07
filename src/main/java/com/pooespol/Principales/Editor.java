@@ -67,13 +67,26 @@ public class Editor extends Usuario {
     
     @Override
     public void tareaAsignada() {
-        System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);
-        this.decision=tomarDecision(ArticuloAsignado);
+        System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);  
+            mostrarDetalleArticulo();
+            for (Revisor r: ArticuloAsignado.getRevisores()){
+                System.out.println("Comentarios Revisor "+r.getNombre()+": "+r.getComentarios());
+                if(r.getDecision()==true){
+                    System.out.println("Decision Revisor "+r.getNombre()+": Aprobado");
+                }else{
+                    System.out.println("Decision Revisor "+r.getNombre()+": No aprobado");
+                }
+            }
+            System.out.println("");
+            this.decision=tomarDecision(ArticuloAsignado);
+
+        
+
     }
     
     public boolean tomarDecision(Articulo articulo) {
         // Simulación de toma de decisión
-        System.out.println("Revisión del artículo: " + articulo.getTitulo());
+        System.out.println("Registro de decision final del articulo: "+ articulo.getTitulo());
         System.out.println("Estado actual: " + articulo.getEstado());
         System.out.println("1. Aprobar");
         System.out.println("2. Rechazar");
@@ -82,12 +95,21 @@ public class Editor extends Usuario {
         // Se utiliza un nuevo scanner ya que así no cerramos el scanner anterior
         int decision = sc.nextInt();
         sc.nextLine(); // Consumir la nueva línea pendiente
+        
+        if (decision==1){
+            articulo.setEstado(EstadoArticulo.PUBLICADO);
+            System.out.println("Artículo " + articulo.getEstado() + " exitosamente.");         
+            return true;
+        }else{
+            articulo.setEstado(EstadoArticulo.NOPUBLICADO);
+            System.out.println("Articulo "+articulo.getEstado());
+            return false;
+        }
+        
+        
 
-        boolean aprobar = decision == 1;
-        articulo.setEstado(EstadoArticulo.PUBLICADO);
-
-        System.out.println("Artículo " + articulo.getEstado() + " exitosamente.");
-        return aprobar;
+        
+    
     }
     public void mostrarDetalleArticulo() {
         if (ArticuloAsignado != null) {

@@ -57,7 +57,7 @@ public class Revisor extends Usuario {
     public String getComentarios() {
         return comentarios;
     }
-
+    
     public void agregarComentarios(String comentarios) {
         this.comentarios = comentarios + "\n";
     }
