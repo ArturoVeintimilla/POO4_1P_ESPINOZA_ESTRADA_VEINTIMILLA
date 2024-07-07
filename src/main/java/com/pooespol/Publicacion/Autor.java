@@ -60,7 +60,6 @@ public class Autor extends Usuario {
         articulos.add(articulo);
         
         //Escribe al articulo en el archivo Articulos.txt 
-        Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt", articulo.toString());
 
         System.out.println(articulo.toString());
 

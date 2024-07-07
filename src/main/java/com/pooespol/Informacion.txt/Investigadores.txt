@@ -12,3 +12,7 @@ Investigador: Nombre='a', apellido='b', correo='ab@gmail.com' , institucion='c',
 Investigador: Nombre='revisor1', apellido='a', correo='b@gmail.com' , institucion='c', campoInvestigacion='d' 
 Investigador: Nombre='Pepito', apellido='Guzman', correo='pepito@gmail.com' , institucion='espol', campoInvestigacion='cienca' 
 Investigador: Nombre='a', apellido='a', correo='a' , institucion='a', campoInvestigacion='aa' 
+Investigador: Nombre='Gloria', apellido='Vasquez', correo='gloriaV@gmail.com' , institucion='XYZ', campoInvestigacion='ABC' 
+Investigador: Nombre='Ricardo', apellido='Arjona', correo='ricardoA@gmail.com' , institucion='BNM', campoInvestigacion='ASD' 
+Investigador: Nombre='Bryan', apellido='Santillan', correo='bryanS@gmail.com' , institucion='espol', campoInvestigacion='Matematica' 
+Investigador: Nombre='Jordy', apellido='Angulo', correo='jordyA@gmail.com' , institucion='espol', campoInvestigacion='Quimica' 
