@@ -72,27 +72,32 @@ public class Editor extends Usuario {
     }
     
     public void tareaAsignada(int idArticulo) {
-        System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);  
-            mostrarDetalleArticulo(idArticulo);
-            for(Articulo a: ArticuloAsignados){
-                if(a.getCodigoArticulo()== idArticulo){
-                    for (Revisor r: a.getRevisores()){
-                        System.out.println("Comentarios Revisor "+r.getNombre()+": "+r.getComentarios());
-                        if(r.getDecision()==true){
-                            System.out.println("Decision Revisor "+r.getNombre()+": Aprobado");
-                        }else{
-                            System.out.println("Decision Revisor "+r.getNombre()+": No aprobado");
-                        }
+        System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);
+        boolean articuloEncontrado = false;
+    
+        for (Articulo a : ArticuloAsignados) {
+            if (a.getCodigoArticulo() == idArticulo) {
+                articuloEncontrado = true;
+                mostrarDetalleArticulo(idArticulo);
+    
+                for (Revisor r : a.getRevisores()) {
+                    System.out.println("Comentarios Revisor " + r.getNombre() + ": " + r.getComentarios());
+                    if (r.getDecision()) {
+                        System.out.println("Decisión Revisor " + r.getNombre() + ": Aprobado");
+                    } else {
+                        System.out.println("Decisión Revisor " + r.getNombre() + ": No aprobado");
                     }
-                    System.out.println("");
-                    this.decision=tomarDecision(a);
                 }
                 
-
+                System.out.println("");
+                this.decision = tomarDecision(a);
+                break; // Salir del bucle una vez encontrado el artículo
             }
-          
-            
-        
+        }
+    
+        if (!articuloEncontrado) {
+            System.out.println("Artículo con ID " + idArticulo + " no encontrado en los artículos asignados.");
+        }
 
     }
     
