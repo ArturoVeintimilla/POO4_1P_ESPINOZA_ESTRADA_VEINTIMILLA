@@ -133,10 +133,7 @@ public class Revisor extends Usuario {
 
     @Override
     public String toString() {
-        return "Revisor: " +
-                "nombre='" + getNombre() + '\'' +
-                ", apellido='" + getApellido() + '\'' +
-                ", correo='" + getCorreo() + '\'' +
+        return "Revisor: "+super.toString()+
                 ", especialidad='" + especialidad + '\'' ;
     }
 }

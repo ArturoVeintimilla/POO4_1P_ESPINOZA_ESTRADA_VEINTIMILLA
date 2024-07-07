@@ -149,8 +149,7 @@ public class Editor extends Usuario {
     
     @Override
     public String toString() {
-        return "Editor{" +super.toString()+
-                ", nombreJournal='" + nombreJournal + '\'' +
-                '}';
+        return "Editor: " +super.toString()+
+                ", nombreJournal='" + nombreJournal + '\'';
     }
 }
