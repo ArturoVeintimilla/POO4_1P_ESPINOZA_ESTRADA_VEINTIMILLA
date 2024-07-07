@@ -30,7 +30,7 @@ public class Aplicacion {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        cargarUsuariosDesdeArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\usuarios.txt"); // Cargar datos de usuarios desde archivo
+        cargarUsuariosDesdeArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
 
 
         System.out.println("\nBienvenido al sistema de gestión de artículos científicos");
@@ -118,8 +118,8 @@ public class Aplicacion {
         System.out.println("- " + revisor1.getNombre());
         System.out.println("- " + revisor2.getNombre());
 
-        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Revisores.txt", revisor1.toString());
-        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Revisores.txt", revisor2.toString());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor1.toString());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor2.toString());
 
     
         // Asignar artículo a los revisores
