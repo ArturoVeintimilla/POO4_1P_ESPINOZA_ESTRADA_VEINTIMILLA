@@ -1,0 +1,1 @@
+Editor: Nombre='Sebastian', apellido='Toaza', correo='sebastoa@gmail.com' , nombreJournal='Journal D'

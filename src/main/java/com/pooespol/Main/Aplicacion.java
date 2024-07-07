@@ -261,7 +261,11 @@ public class Aplicacion {
         sc.nextLine();
     }
 
+<<<<<<< HEAD
     private static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
+=======
+   private static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
+>>>>>>> 48cf7ea06ee97cc40f1fa3cd2cc1d50c0fcca9fa
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
@@ -295,7 +299,11 @@ public class Aplicacion {
             throw new RuntimeException(e);
         }
     }
+<<<<<<< HEAD
     public static void escribirArchivo(String nombreArchivo, String contenido) {
+=======
+     public static void escribirArchivo(String nombreArchivo, String contenido) {
+>>>>>>> 48cf7ea06ee97cc40f1fa3cd2cc1d50c0fcca9fa
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
             writer.write(contenido);
             writer.newLine();
