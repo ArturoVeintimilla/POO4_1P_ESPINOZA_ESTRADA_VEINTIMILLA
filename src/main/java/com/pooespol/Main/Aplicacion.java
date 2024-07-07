@@ -217,13 +217,13 @@ public class Aplicacion {
                 System.out.println("Ingrese el id del articulo");
                 int idArticulo=sc.nextInt();
                 sc.nextLine();
-                procesarComentariosDecisiones("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
+                procesarComentariosDecisiones("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
                 editor.tareaAsignada(idArticulo);
                 editor.guardarComentarios(editor, idArticulo);
                 verEstadoArticulo(idArticulo);
 
                 //Escribir el archivo Editores.txt
-                escribirArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Editores.txt", editor.toString());
+                escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Editores.txt", editor.toString());
                 
                 
             } else if (usuarioEncontrado instanceof Revisor) {
