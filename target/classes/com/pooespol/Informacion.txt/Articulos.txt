@@ -12,3 +12,4 @@ El Articulo con Titulo='e',codigo del Articulo=10055, resumen='f', contenido='g'
 El Articulo con Titulo='e',codigo del Articulo=30033, resumen='f', contenido='g', palabrasClave='h', estado=SINREVISION fue sometido existosamente
 El Articulo con Titulo='titulo',codigo del Articulo=10050, resumen='resumen', contenido='contenido', palabrasClave='a', estado=SINREVISION fue sometido existosamente
 El Articulo con Titulo='a',codigo del Articulo=10042, resumen='a', contenido='a', palabrasClave='aa', estado=SINREVISION fue sometido existosamente
+El Articulo con Titulo='a',codigo del Articulo=10043, resumen='a', contenido='aaa', palabrasClave='', estado=SINREVISION fue sometido existosamente

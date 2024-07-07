@@ -12,3 +12,4 @@ Investigador: Nombre='a', apellido='b', correo='ab@gmail.com' , institucion='c',
 Investigador: Nombre='revisor1', apellido='a', correo='b@gmail.com' , institucion='c', campoInvestigacion='d' 
 Investigador: Nombre='Pepito', apellido='Guzman', correo='pepito@gmail.com' , institucion='espol', campoInvestigacion='cienca' 
 Investigador: Nombre='a', apellido='a', correo='a' , institucion='a', campoInvestigacion='aa' 
+Investigador: Nombre='Cesar', apellido='Toaza', correo='cesartoaza@gmail.com' , institucion='armada', campoInvestigacion='maritima' 
