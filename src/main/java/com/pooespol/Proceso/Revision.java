@@ -70,7 +70,8 @@ public class Revision {
             "Decisión Editor: " + editor.getDecision() + "\n" +
             "------------------------------------------------------------------\n" +
             "Estado del Artículo: " + articulo.getEstado() + "\n";
-             Aplicacion.escribirArchivo("Revision.txt", "Articulo:"+articulo.getTitulo()+", Comentarios R1: "+revisor1.getComentarios()+", Comentarios R2:"+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+editor.getDecision());
+
+         Aplicacion.escribirArchivo("Revision.txt", "Articulo:"+articulo.getTitulo()+", Comentarios R1: "+revisor1.getComentarios()+", Comentarios R2:"+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+editor.getDecision());
         return informe;
     }
 }

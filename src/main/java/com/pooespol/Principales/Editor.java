@@ -79,7 +79,7 @@ public class Editor extends Usuario {
             }
             System.out.println("");
             this.decision=tomarDecision(ArticuloAsignado);
-
+            
         
 
     }
