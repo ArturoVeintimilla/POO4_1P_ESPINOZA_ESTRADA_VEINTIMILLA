@@ -1,0 +1,2 @@
+Revisor: nombre='Pedro', apellido='Sánchez', correo='pedro232474824@gmail.com', especialidad='Biología'
+Revisor: nombre='Juan', apellido='Pérez', correo='juan232474824@gmail.com', especialidad='Química'

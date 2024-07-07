@@ -96,7 +96,7 @@ public class Aplicacion {
         usuarios.add(autor);
 
         autor.someterArticulo(scanner, articulos,autor);
-        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Investigadores.txt", "Investigador: "+autor.toString());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
 
         // Asignar revisores al artículo recién sometido
         Articulo articuloReciente = articulos.get(articulos.size() - 1);
