@@ -15,3 +15,5 @@ Investigador: Nombre='a', apellido='a', correo='a' , institucion='a', campoInves
 Investigador: Nombre='Cesar', apellido='Toaza', correo='cesartoaza@gmail.com' , institucion='armada', campoInvestigacion='maritima' 
 Investigador: Nombre='Rafael', apellido='Correa', correo='mashi@gmail.com' , institucion='Ladrones', campoInvestigacion='corrupcion' 
 Investigador: Nombre='Daniel', apellido='Noboa', correo='nobita@gmail.com' , institucion='noboacoorporation', campoInvestigacion='banano' 
+Investigador: Nombre='Vicente', apellido='Hidalgo', correo='vicenteH@gmail.com' , institucion='InstitucionXYZ', campoInvestigacion='Ciencia' 
+Investigador: Nombre='a', apellido='a', correo='a' , institucion='a', campoInvestigacion='a' 

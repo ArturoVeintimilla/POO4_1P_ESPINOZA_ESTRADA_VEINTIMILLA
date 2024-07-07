@@ -56,22 +56,44 @@ public class Revision {
     
 
     public String imprimirRevision() {
+        String decisionRevisor1=null;
+        String decisionRevisor2=null;
+        String decisionEditor1=null;
+        if(revisor1.getDecision()){
+            decisionRevisor1="Aprobado";
+        }else{
+            decisionRevisor1="No aprobado";
+        }
+
+        if(revisor2.getDecision()){
+            decisionRevisor2="Aprobado";
+        }else{
+            decisionRevisor2="No aprobado";
+        }
+
+        if(editor.getDecision()){
+            decisionEditor1="Aprobado";
+        }else{
+            decisionEditor1="No aprobado";
+        }
         String informe = "=== Información de la Revisión ===\n" +
             "Artículo: " + articulo.getTitulo() + " (ID: " + articulo.getCodigoArticulo() + ")\n" +
             "------------------------------------------------------------------\n" +
             "Revisor 1: " + revisor1.getNombre() + " " + revisor1.getApellido() + "\n" +
             "Comentarios Revisor 1: " + revisor1.getComentarios() + "\n" +
-            "Decisión Revisor 1: " + revisor1.getDecision() + "\n" +
+            "Decisión Revisor 1: " + decisionRevisor1+ "\n" +
             "------------------------------------------------------------------\n" +
             "Revisor 2: " + revisor2.getNombre() + " " + revisor2.getApellido() + "\n" +
             "Comentarios Revisor 2: " + revisor2.getComentarios() + "\n" +
-            "Decisión Revisor 2: " + revisor2.getDecision() + "\n" +
+            "Decisión Revisor 2: " + decisionRevisor2 + "\n" +
             "------------------------------------------------------------------\n" +
-            "Decisión Editor: " + editor.getDecision() + "\n" +
+            "Decisión Editor: " + decisionEditor1 + "\n" +
             "------------------------------------------------------------------\n" +
             "Estado del Artículo: " + articulo.getEstado() + "\n";
+            
+            String linea="Articulo:"+articulo.getTitulo()+", Comentarios R1: "+revisor1.getComentarios()+", Comentarios R2:"+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+editor.getDecision();
 
-         Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", "Articulo:"+articulo.getTitulo()+", Comentarios R1: "+revisor1.getComentarios()+", Comentarios R2:"+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+editor.getDecision());
+         Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt",linea.replaceAll("\n", " ") );
         return informe;
     }
 }
