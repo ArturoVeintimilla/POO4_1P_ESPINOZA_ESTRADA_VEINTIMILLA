@@ -31,6 +31,7 @@ public class Aplicacion {
 
     public static void main(String[] args) {
         cargarUsuariosDesdeArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
+        cargarArticulos("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\articulos.txt"); // Cargar datos de artículos desde archivo
 
 
         System.out.println("\nBienvenido al sistema de gestión de artículos científicos");
@@ -146,6 +147,8 @@ public class Aplicacion {
         } else {
             System.out.println("No hay editores disponibles para asignar a este artículo.");
         }
+        Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt", articulo.toString()+"Revisores :"+articulo.getRevisores()+","+"Editor :"+articulo.getEditor());
+
         enviarCorreo(revisor1.getCorreo(), "Nuevo artículo asignado para revisión", "Estimado revisor,\n\nSe les ha asignado el artículo \"" 
         + articulo.getTitulo() + "\" para revisión. Por favor, revisen su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
         enviarCorreo(revisor2.getCorreo(), "Nuevo artículo asignado para revisión", "Estimado revisor,\n\nSe les ha asignado el artículo \"" 
@@ -361,7 +364,72 @@ public class Aplicacion {
             System.out.println("Error de formato numérico en el archivo: " + e.getMessage());
         }
     }
-    
 
+    private static void cargarArticulos(String nombreArchivo) {
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            br.readLine();
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                // Procesar la línea para extraer la información necesaria
+                String[] partes = linea.split(", ");
+                String titulo = partes[0].split("=")[1].replace("'", "").trim();
+                String nombreCompletoAutor = partes[1].split(":")[1].trim();
+                String[] nombreAutorPartes = nombreCompletoAutor.split(" ");
+                String nombreAutor = nombreAutorPartes[0];
+                String apellidoAutor = nombreAutorPartes[1];
+                int codigoArticulo = Integer.parseInt(partes[2].split("=")[1].trim());
+                String resumen = partes[3].split("=")[1].replace("'", "").trim();
+                String contenido = partes[4].split("=")[1].replace("'", "").trim();
+                String palabrasClave = partes[5].split("=")[1].replace("'", "").trim();                
+                String[] revisores = partes[7].split(":")[1].trim().split(", ");
+                String[] nombreRevisor1Partes = revisores[0].split(" ");
+                String nombreRevisor1 = nombreRevisor1Partes[0];
+                String apellidoRevisor1 = nombreRevisor1Partes[1];
+                String[] nombreRevisor2Partes = revisores[1].split(" ");
+                String nombreRevisor2 = nombreRevisor2Partes[0];
+                String apellidoRevisor2 = nombreRevisor2Partes[1];
+                
+                String nombreCompletoEditor = partes[8].split(":")[1].trim();
+                String[] nombreEditorPartes = nombreCompletoEditor.split(" ");
+                String nombreEditor = nombreEditorPartes[0];
+                String apellidoEditor = nombreEditorPartes[1];
+    
+                // Buscar el autor, revisores y editor en la lista de usuarios
+                Autor autor = (Autor) obtenerUsuarioPorNombre(nombreAutor, apellidoAutor);
+                Revisor revisor1 = (Revisor) obtenerUsuarioPorNombre(nombreRevisor1, apellidoRevisor1);
+                Revisor revisor2 = (Revisor) obtenerUsuarioPorNombre(nombreRevisor2, apellidoRevisor2);
+                Editor editor = (Editor) obtenerUsuarioPorNombre(nombreEditor, apellidoEditor);
+    
+                // Crear el artículo y asignar las relaciones
+                Articulo articulo = new Articulo(autor, codigoArticulo, titulo, resumen, contenido, palabrasClave);
+                articulo.agregarRevisor(revisor1);
+                articulo.agregarRevisor(revisor2);
+                articulo.setEditor(editor);
+    
+                articulos.add(articulo);
+                revisor1.setArticuloAsignados(articulo);
+                revisor2.setArticuloAsignados(articulo);
+                ArrayList<Articulo> articulos=editor.getArticulosAsignado();
+                articulos.add(articulo);
+                editor.setArticuloAsignados(articulos);
+                
+    
+                System.out.println("Artículo cargado: " + titulo);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error de formato numérico en el archivo: " + e.getMessage());
+        }
+    }
+    
+    private static Usuario obtenerUsuarioPorNombre(String nombre, String apellido) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNombre().equalsIgnoreCase(nombre) && usuario.getApellido().equalsIgnoreCase(apellido)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
     
 }
