@@ -60,7 +60,7 @@ public class Revisor extends Usuario {
     }
     
     public void agregarComentarios(String comentarios) {
-        this.comentarios = comentarios + "\n";
+        this.comentarios = comentarios;
     }
     public String getUserAcesso(){
         return userAcceso;
@@ -140,6 +140,6 @@ public class Revisor extends Usuario {
     public void guardarComentarios(Revisor revisor){
         int i= revisor.getArticuloAsignados().getRevisores().indexOf(revisor);
         i+=1;
-        Aplicacion.escribirArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", "\n"+"Articulo: "+revisor.getArticuloAsignados().getTitulo()+ ", decision del Revisor"+i+" "+revisor.getDecision()+", comentarios del Revisor"+i+" "+revisor.getComentarios());
+        Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt","Articulo: "+revisor.getArticuloAsignados().getTitulo()+ ", decision del Revisor"+i+" "+revisor.getDecision()+", comentarios del Revisor"+i+" "+revisor.getComentarios());
     }
 }

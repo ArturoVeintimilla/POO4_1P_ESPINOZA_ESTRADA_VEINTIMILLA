@@ -1,12 +1,2 @@
-Articulo:e, Comentarios R1: estaba bonito
-, Comentarios R2:estaba bacan
-, Decision de Editor Luis: true
-Articulo:titulo, Comentarios R1: chato
-, Comentarios R2:bacan
-, Decision de Editor Luis: true
-Articulo:el robo del siglo, Comentarios R1: fuera correa
-, Comentarios R2:bacan
-, Decision de Editor Luis: true
-Articulo:Banano, Comentarios R1: bacan
-, Comentarios R2:bacan2
-, Decision de Editor Luis: trueArticulo:TituloABC, Comentarios R1: Excelente Articulo , Comentarios R2:es un buen articulo , Decision de Editor Luis: true
+Articulo: titulo, decision del Revisor1 true, comentarios del Revisor1 nice1
+Articulo: titulo, decision del Revisor2 true, comentarios del Revisor2 nice2
