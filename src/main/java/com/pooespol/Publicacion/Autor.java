@@ -7,6 +7,7 @@ import java.util.Scanner;
 import com.pooespol.Main.Aplicacion;
 import com.pooespol.Principales.Usuario;
 
+
 public class Autor extends Usuario {
     private int codigoID;
     private String institucion;
@@ -59,13 +60,18 @@ public class Autor extends Usuario {
         articulos.add(articulo);
         
         //Escribe al articulo en el archivo Articulos.txt 
-        Aplicacion.escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt", articulo.toString());
+        Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt", articulo.toString());
 
         System.out.println(articulo.toString());
+
+
     }
 
     //COMPLETAR
-    public void tareaAsignada(){
+   
         
-    }
+        
+        
+        
+    
 }

@@ -1,0 +1,6 @@
+Articulo:e, Comentarios R1: estaba bonito
+, Comentarios R2:estaba bacan
+, Decision de Editor Luis: true
+Articulo:titulo, Comentarios R1: chato
+, Comentarios R2:bacan
+, Decision de Editor Luis: true

@@ -93,8 +93,8 @@ public class Revisor extends Usuario {
         if (articuloAsignado != null) {
             System.out.println("Revisión de artículo asignada: " + articuloAsignado.getTitulo());
             mostrarDetalleArticulo();
-            
             tomarDecision();
+            
         } else {
             System.out.println("No se ha asignado ningún artículo para revisar.");
         }
