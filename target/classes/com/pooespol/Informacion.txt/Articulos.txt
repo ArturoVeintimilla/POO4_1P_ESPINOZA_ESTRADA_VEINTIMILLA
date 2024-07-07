@@ -13,3 +13,5 @@ El Articulo con Titulo='e',codigo del Articulo=30033, resumen='f', contenido='g'
 El Articulo con Titulo='titulo',codigo del Articulo=10050, resumen='resumen', contenido='contenido', palabrasClave='a', estado=SINREVISION fue sometido existosamente
 El Articulo con Titulo='a',codigo del Articulo=10042, resumen='a', contenido='a', palabrasClave='aa', estado=SINREVISION fue sometido existosamente
 El Articulo con Titulo='a',codigo del Articulo=10043, resumen='a', contenido='aaa', palabrasClave='', estado=SINREVISION fue sometido existosamente
+El Articulo con Titulo='el robo del siglo',codigo del Articulo=30056, resumen='a', contenido='a', palabrasClave='mashi', estado=SINREVISION fue sometido existosamente
+El Articulo con Titulo='Banano',codigo del Articulo=20056, resumen='mas banano', contenido='muchisimo bananos', palabrasClave='banana', estado=SINREVISION fue sometido existosamente

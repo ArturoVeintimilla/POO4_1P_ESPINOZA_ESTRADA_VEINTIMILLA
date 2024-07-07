@@ -23,3 +23,7 @@ Revisor: nombre='Arturo', apellido='Yipez', correo='artyi@gmail.com', especialid
 Revisor: nombre='Alejandro', apellido='Estrada', correo='alest@gmail.com', especialidad='Fisica'
 Revisor: nombre='Pedro', apellido='Sánchez', correo='pedro232474824@gmail.com', especialidad='Biología'
 Revisor: nombre='Juan', apellido='Pérez', correo='juan232474824@gmail.com', especialidad='Química'
+Revisor: nombre='Pedro', apellido='Sánchez', correo='pedro232474824@gmail.com', especialidad='Biología'
+Revisor: nombre='Juan', apellido='Pérez', correo='juan232474824@gmail.com', especialidad='Química'
+Revisor: nombre='Pedro', apellido='Sánchez', correo='pedro232474824@gmail.com', especialidad='Biología'
+Revisor: nombre='Juan', apellido='Pérez', correo='juan232474824@gmail.com', especialidad='Química'

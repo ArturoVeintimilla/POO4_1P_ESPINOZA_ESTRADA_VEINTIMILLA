@@ -4,3 +4,9 @@ Articulo:e, Comentarios R1: estaba bonito
 Articulo:titulo, Comentarios R1: chato
 , Comentarios R2:bacan
 , Decision de Editor Luis: true
+Articulo:el robo del siglo, Comentarios R1: fuera correa
+, Comentarios R2:bacan
+, Decision de Editor Luis: true
+Articulo:Banano, Comentarios R1: bacan
+, Comentarios R2:bacan2
+, Decision de Editor Luis: true

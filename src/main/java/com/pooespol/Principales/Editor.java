@@ -138,7 +138,10 @@ public class Editor extends Usuario {
                 System.out.println("Palabras clave: " + a.getPalabrasClave());
             }else{
                 System.out.println("No se ha asignado ningún artículo para revisar.");
+
             }
+            break; // Salir del bucle 
+
 
          }
      }
