@@ -30,8 +30,8 @@ public class Aplicacion {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        cargarUsuariosDesdeArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
-        cargarArticulos("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\articulos.txt"); // Cargar datos de artículos desde archivo
+        cargarUsuariosDesdeArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
+        cargarArticulos("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt"); // Cargar datos de artículos desde archivo
 
 
         System.out.println("\nBienvenido al sistema de gestión de artículos científicos");
@@ -97,7 +97,7 @@ public class Aplicacion {
         usuarios.add(autor);
 
         autor.someterArticulo(scanner, articulos,autor);
-        escribirArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
+        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
 
         // Asignar revisores al artículo recién sometido
         Articulo articuloReciente = articulos.get(articulos.size() - 1);
@@ -120,8 +120,8 @@ public class Aplicacion {
         System.out.println("- " + revisor1.getNombre());
         System.out.println("- " + revisor2.getNombre());
 
-        escribirArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor1.toString());
-        escribirArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor2.toString());
+        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor1.toString());
+        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor2.toString());
 
     
         // Asignar artículo a los revisores
@@ -147,7 +147,7 @@ public class Aplicacion {
         } else {
             System.out.println("No hay editores disponibles para asignar a este artículo.");
         }
-        Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt", articulo.toString()+"Revisores :"+articulo.getRevisores()+","+"Editor :"+articulo.getEditor());
+        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt", "\n"+articulo.toString()+ ", Revisor1 :"+articulo.getRevisores().get(0).getNombre()+" "+articulo.getRevisores().get(0).getApellido()+", Revisor2: "+articulo.getRevisores().get(1).getNombre()+" "+articulo.getRevisores().get(1).getApellido()+","+" Editor :"+articulo.getEditor().getNombre()+" "+articulo.getEditor().getApellido());
 
         enviarCorreo(revisor1.getCorreo(), "Nuevo artículo asignado para revisión", "Estimado revisor,\n\nSe les ha asignado el artículo \"" 
         + articulo.getTitulo() + "\" para revisión. Por favor, revisen su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
@@ -375,24 +375,26 @@ public class Aplicacion {
                 String titulo = partes[0].split("=")[1].replace("'", "").trim();
                 String nombreCompletoAutor = partes[1].split(":")[1].trim();
                 String[] nombreAutorPartes = nombreCompletoAutor.split(" ");
-                String nombreAutor = nombreAutorPartes[0];
-                String apellidoAutor = nombreAutorPartes[1];
+                String nombreAutor = nombreAutorPartes[0].trim();
+                String apellidoAutor = nombreAutorPartes[1].trim();
                 int codigoArticulo = Integer.parseInt(partes[2].split("=")[1].trim());
                 String resumen = partes[3].split("=")[1].replace("'", "").trim();
                 String contenido = partes[4].split("=")[1].replace("'", "").trim();
-                String palabrasClave = partes[5].split("=")[1].replace("'", "").trim();                
-                String[] revisores = partes[7].split(":")[1].trim().split(", ");
-                String[] nombreRevisor1Partes = revisores[0].split(" ");
-                String nombreRevisor1 = nombreRevisor1Partes[0];
-                String apellidoRevisor1 = nombreRevisor1Partes[1];
-                String[] nombreRevisor2Partes = revisores[1].split(" ");
-                String nombreRevisor2 = nombreRevisor2Partes[0];
-                String apellidoRevisor2 = nombreRevisor2Partes[1];
-                
-                String nombreCompletoEditor = partes[8].split(":")[1].trim();
+                String palabrasClave = partes[5].split("=")[1].replace("'", "").trim();
+                String nombreCompletoRevisor1 = partes[7].split(":")[1].trim();
+                String[] nombreRevisor1Partes = nombreCompletoRevisor1.split(" ");
+                String nombreRevisor1 = nombreRevisor1Partes[0].trim();
+                String apellidoRevisor1 = nombreRevisor1Partes[1].trim();
+                String nombreCompletoRevisor2 = partes[8].split(":")[1].trim();
+                String[] nombreRevisor2Partes = nombreCompletoRevisor2.split(" ");
+                String nombreRevisor2 = nombreRevisor2Partes[0].trim();
+                String apellidoRevisor2 = nombreRevisor2Partes[1].trim();
+                String nombreCompletoEditor = partes[9].split(":")[1].trim();
                 String[] nombreEditorPartes = nombreCompletoEditor.split(" ");
-                String nombreEditor = nombreEditorPartes[0];
-                String apellidoEditor = nombreEditorPartes[1];
+                String nombreEditor = nombreEditorPartes[0].trim();
+                String apellidoEditor = nombreEditorPartes[1].trim();
+                
+                
     
                 // Buscar el autor, revisores y editor en la lista de usuarios
                 Autor autor = (Autor) obtenerUsuarioPorNombre(nombreAutor, apellidoAutor);

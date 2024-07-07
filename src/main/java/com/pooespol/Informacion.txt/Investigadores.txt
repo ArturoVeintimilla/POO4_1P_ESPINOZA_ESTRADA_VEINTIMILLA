@@ -17,3 +17,5 @@ Investigador: Nombre='Rafael', apellido='Correa', correo='mashi@gmail.com' , ins
 Investigador: Nombre='Daniel', apellido='Noboa', correo='nobita@gmail.com' , institucion='noboacoorporation', campoInvestigacion='banano' 
 Investigador: Nombre='Vicente', apellido='Hidalgo', correo='vicenteH@gmail.com' , institucion='InstitucionXYZ', campoInvestigacion='Ciencia' 
 Investigador: Nombre='a', apellido='a', correo='a' , institucion='a', campoInvestigacion='a' 
+Investigador: Nombre='Alejandro', apellido='Arbeloa', correo='alejandroA@gmail.com' , institucion='espol', campoInvestigacion='Computacion' 
+Investigador: Nombre='Arturo', apellido='Veintimilla', correo='a@gmail.com' , institucion='espol', campoInvestigacion='ciencia' 

@@ -93,7 +93,7 @@ public class Revision {
             
             String linea="Articulo:"+articulo.getTitulo()+", Comentarios R1: "+revisor1.getComentarios()+", Comentarios R2:"+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+editor.getDecision();
 
-         Aplicacion.escribirArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt",linea.replaceAll("\n", " ") );
+         Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt",linea.replaceAll("\n", " ") );
         return informe;
     }
 }
