@@ -1,5 +1,6 @@
 package com.pooespol.Principales;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.pooespol.Publicacion.Articulo;
@@ -8,7 +9,7 @@ import com.pooespol.Tipos.TipoDeRol;
 
 public class Editor extends Usuario {
     private String nombreJournal;
-    private Articulo ArticuloAsignado; // Nuevo atributo para almacenar el artículo asignado al revisor
+    private ArrayList<Articulo>ArticuloAsignados; // Nuevo atributo para almacenar el artículo asignado al revisor
     private boolean decision;
     private String userAcceso;
     private String contrasena;
@@ -16,11 +17,11 @@ public class Editor extends Usuario {
     
     public static  Scanner sc = new Scanner(System.in);
 
-    public void setArticuloAsignados(Articulo articulo) {
-        this.ArticuloAsignado = articulo;
+    public void setArticuloAsignados(ArrayList<Articulo> articulo) {
+        this.ArticuloAsignados = articulo;
     }
-    public Articulo getArticulosAsignado() {
-        return ArticuloAsignado;
+    public ArrayList<Articulo> getArticulosAsignado() {
+        return ArticuloAsignados;
     }
     public String getNombreJournal() {
         return nombreJournal;
@@ -54,7 +55,7 @@ public class Editor extends Usuario {
         this.userAcceso= userAcceso;
         this.contrasena=contrasena;
         this.nombreJournal = nombreJournal;
-        this.ArticuloAsignado = null; // Inicialmente no tiene artículo asignado
+        this.ArticuloAsignados = new ArrayList<>(); // Inicialmente no tiene artículo asignado
 
     }
     public boolean IniciarSesion(String user, String password){
@@ -66,19 +67,30 @@ public class Editor extends Usuario {
     }
     
     @Override
-    public void tareaAsignada() {
+    public void tareaAsignada(){
+
+    }
+    
+    public void tareaAsignada(int idArticulo) {
         System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);  
-            mostrarDetalleArticulo();
-            for (Revisor r: ArticuloAsignado.getRevisores()){
-                System.out.println("Comentarios Revisor "+r.getNombre()+": "+r.getComentarios());
-                if(r.getDecision()==true){
-                    System.out.println("Decision Revisor "+r.getNombre()+": Aprobado");
-                }else{
-                    System.out.println("Decision Revisor "+r.getNombre()+": No aprobado");
+            mostrarDetalleArticulo(idArticulo);
+            for(Articulo a: ArticuloAsignados){
+                if(a.getCodigoArticulo()== idArticulo){
+                    for (Revisor r: a.getRevisores()){
+                        System.out.println("Comentarios Revisor "+r.getNombre()+": "+r.getComentarios());
+                        if(r.getDecision()==true){
+                            System.out.println("Decision Revisor "+r.getNombre()+": Aprobado");
+                        }else{
+                            System.out.println("Decision Revisor "+r.getNombre()+": No aprobado");
+                        }
+                    }
+                    System.out.println("");
+                    this.decision=tomarDecision(a);
                 }
+                
+
             }
-            System.out.println("");
-            this.decision=tomarDecision(ArticuloAsignado);
+          
             
         
 
@@ -111,17 +123,22 @@ public class Editor extends Usuario {
         
     
     }
-    public void mostrarDetalleArticulo() {
-        if (ArticuloAsignado != null) {
-            System.out.println("\nDetalles del artículo asignado:");
-            System.out.println("Título: " + ArticuloAsignado.getTitulo());
-            System.out.println("Resumen: " + ArticuloAsignado.getResumen());
-            System.out.println("Contenido: " + ArticuloAsignado.getContenido());
-            System.out.println("Palabras clave: " + ArticuloAsignado.getPalabrasClave());
-        } else {
-            System.out.println("No se ha asignado ningún artículo para revisar.");
-        }
-    }
+    public void mostrarDetalleArticulo(int idArticulo) {
+        for(Articulo a: ArticuloAsignados){
+            if(a.getCodigoArticulo()==idArticulo){
+                System.out.println("\nDetalles del artículo asignado:");
+                System.out.println("Título: " + a.getTitulo());
+                System.out.println("Resumen: " + a.getResumen());
+                System.out.println("Contenido: " + a.getContenido());
+                System.out.println("Palabras clave: " + a.getPalabrasClave());
+            }else{
+                System.out.println("No se ha asignado ningún artículo para revisar.");
+            }
+
+         }
+     }
+        
+    
     @Override
     public String toString() {
         return "Editor{" +super.toString()+

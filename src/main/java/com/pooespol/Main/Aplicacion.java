@@ -30,7 +30,7 @@ public class Aplicacion {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        cargarUsuariosDesdeArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
+        cargarUsuariosDesdeArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
 
 
         System.out.println("\nBienvenido al sistema de gestión de artículos científicos");
@@ -96,7 +96,7 @@ public class Aplicacion {
         usuarios.add(autor);
 
         autor.someterArticulo(scanner, articulos,autor);
-        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
+        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
 
         // Asignar revisores al artículo recién sometido
         Articulo articuloReciente = articulos.get(articulos.size() - 1);
@@ -105,6 +105,7 @@ public class Aplicacion {
 
     private static void asignarRevisores(Articulo articulo) {
         ArrayList<Revisor> disponibles = obtenerRevisoresDisponibles();
+        articulos.add(articulo);
     
         if (disponibles.size() < 2) {
             System.out.println("No hay suficientes revisores disponibles para asignar a este artículo.");
@@ -118,8 +119,8 @@ public class Aplicacion {
         System.out.println("- " + revisor1.getNombre());
         System.out.println("- " + revisor2.getNombre());
 
-        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor1.toString());
-        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor2.toString());
+        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor1.toString());
+        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor2.toString());
 
     
         // Asignar artículo a los revisores
@@ -134,7 +135,8 @@ public class Aplicacion {
         ArrayList<Editor> editoresDisponibles = obtenerEditoresDisponibles();
         if (!editoresDisponibles.isEmpty()) {
             Editor editorAsignado = editoresDisponibles.get(0); // Simplemente asignamos el primer editor disponible
-            editorAsignado.setArticuloAsignados(articulo);
+    
+            editorAsignado.setArticuloAsignados(articulos);
             articulo.setEditor(editorAsignado);
             System.out.println("Editor asignado automáticamente:");
             System.out.println("- " + editorAsignado.getNombre());
@@ -171,7 +173,7 @@ public class Aplicacion {
         for (Usuario usuario : usuarios) {
             if (usuario instanceof Editor) {
                 Editor editor = (Editor) usuario;
-                if (editor.getArticulosAsignado() == null) {
+                if (editor.getArticulosAsignado().size()<5) {
                     disponibles.add(editor);
                 }
             }
@@ -209,8 +211,13 @@ public class Aplicacion {
             System.out.println("\nInicio de sesión exitoso como " + tipo + ": " + usuarioEncontrado.getNombre() + " " + usuarioEncontrado.getApellido());
             if (usuarioEncontrado instanceof Editor) {
                 Editor editor = (Editor) usuarioEncontrado;
-                editor.tareaAsignada();
-                verEstadoArticulo();
+                System.out.println("Ingrese el id del articulo");
+                int idArticulo=sc.nextInt();
+                sc.nextLine();          
+                editor.tareaAsignada(idArticulo);
+                verEstadoArticulo(idArticulo);
+                
+                
             } else if (usuarioEncontrado instanceof Revisor) {
                 Revisor revisor = (Revisor) usuarioEncontrado;
                 revisor.tareaAsignada();
@@ -227,10 +234,8 @@ public class Aplicacion {
             System.out.println("Usuario o contraseña incorrectos.");
         }
     }
-    private static void verEstadoArticulo() {
-        System.out.print("Ingrese el ID del artículo: ");
-        int idArticulo = sc.nextInt();
-        sc.nextLine(); // Limpiar el buffer de entrada
+    private static void verEstadoArticulo(int idArticulo) {
+        
 
         boolean encontrado = false;
         for (Articulo articulo : articulos) {

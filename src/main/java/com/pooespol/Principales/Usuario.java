@@ -24,7 +24,9 @@ public abstract class Usuario {
         return correo;
     }    
 
-    public abstract void tareaAsignada();
+    public void tareaAsignada(){
+        System.out.println("");
+    }
 
     //Revisar: public abstract Correo generarCorreo();
 

@@ -71,7 +71,7 @@ public class Revision {
             "------------------------------------------------------------------\n" +
             "Estado del Artículo: " + articulo.getEstado() + "\n";
 
-         Aplicacion.escribirArchivo("Revision.txt", "Articulo:"+articulo.getTitulo()+", Comentarios R1: "+revisor1.getComentarios()+", Comentarios R2:"+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+editor.getDecision());
+         Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", "Articulo:"+articulo.getTitulo()+", Comentarios R1: "+revisor1.getComentarios()+", Comentarios R2:"+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+editor.getDecision());
         return informe;
     }
 }

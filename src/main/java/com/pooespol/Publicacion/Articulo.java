@@ -18,6 +18,7 @@ public class Articulo {
     private Editor editor;
 
     public Articulo(Autor autor ,int codigoArticulo, String titulo, String resumen, String contenido, String palabrasClave) {
+        this.autor=autor;
         this.codigoArticulo = codigoArticulo;
         this.titulo = titulo;
         this.resumen = resumen;
