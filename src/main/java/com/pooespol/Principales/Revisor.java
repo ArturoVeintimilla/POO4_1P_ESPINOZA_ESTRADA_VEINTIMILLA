@@ -3,6 +3,7 @@ package com.pooespol.Principales;
 
 import java.util.Scanner;
 
+import com.pooespol.Main.Aplicacion;
 import com.pooespol.Publicacion.Articulo;
 import com.pooespol.Tipos.TipoDeRol;
 
@@ -135,5 +136,10 @@ public class Revisor extends Usuario {
     public String toString() {
         return "Revisor: "+super.toString()+
                 ", especialidad='" + especialidad + '\'' ;
+    }
+    public void guardarComentarios(Revisor revisor){
+        int i= revisor.getArticuloAsignados().getRevisores().indexOf(revisor);
+        i+=1;
+        Aplicacion.escribirArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", "\n"+"Articulo: "+revisor.getArticuloAsignados().getTitulo()+ ", decision del Revisor"+i+" "+revisor.getDecision()+", comentarios del Revisor"+i+" "+revisor.getComentarios());
     }
 }

@@ -218,6 +218,7 @@ public class Aplicacion {
                 int idArticulo=sc.nextInt();
                 sc.nextLine();          
                 editor.tareaAsignada(idArticulo);
+                editor.guardarComentarios(editor, idArticulo);
                 verEstadoArticulo(idArticulo);
 
                 //Escribir el archivo Editores.txt
@@ -232,6 +233,7 @@ public class Aplicacion {
                     System.out.println("Agregue comentarios sobre el artículo:");
                     String comentario = sc.nextLine();
                     revisor.agregarComentarios(comentario);
+                    revisor.guardarComentarios(revisor);
                 }
             }
             System.out.println("\nPresione Enter para volver al menú principal.");

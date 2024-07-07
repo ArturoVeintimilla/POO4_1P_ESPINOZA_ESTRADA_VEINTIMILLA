@@ -3,6 +3,7 @@ package com.pooespol.Principales;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.pooespol.Main.Aplicacion;
 import com.pooespol.Publicacion.Articulo;
 import com.pooespol.Tipos.EstadoArticulo;
 import com.pooespol.Tipos.TipoDeRol;
@@ -146,7 +147,15 @@ public class Editor extends Usuario {
          }
      }
         
-    
+     public void guardarComentarios(Editor editor,int  idArticulo){
+        for (Articulo a : ArticuloAsignados) {
+            if (a.getCodigoArticulo() == idArticulo) {
+                Aplicacion.escribirArchivo("C:\\ProyectoPOO\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", "Articulo: "+a.getTitulo()+ ", decision del Editor: "+editor.getDecision());
+                break; // Salir del bucle una vez encontrado el artículo
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return "Editor: " +super.toString()+
