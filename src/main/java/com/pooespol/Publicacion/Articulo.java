@@ -79,7 +79,7 @@ public class Articulo {
     
     @Override
     public String toString() {
-        return "El Articulo con " +
+        return "\n El Articulo con " +
                 "Titulo='" + titulo + '\'' +
                 ", Autor:" + autor.getNombre()+" "+autor.getApellido() +
                 ", codigo del Articulo=" + codigoArticulo +

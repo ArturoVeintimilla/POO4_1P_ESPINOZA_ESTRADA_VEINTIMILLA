@@ -1,2 +1,2 @@
 --------------Articulos----------------------
-El Articulo con Titulo='titulo', Autor:Arturo Veintimilla, codigo del Articulo=30023, resumen='resumen', contenido='contenido', palabrasClave='clave', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Luis Ramírez
+El Articulo con Titulo='t', Autor:roberto estrada, codigo del Articulo=30013, resumen='r', contenido='c', palabrasClave='clave', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Luis Ramírez

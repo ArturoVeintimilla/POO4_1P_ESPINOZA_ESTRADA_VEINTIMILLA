@@ -91,9 +91,9 @@ public class Revision {
             "------------------------------------------------------------------\n" +
             "Estado del Artículo: " + articulo.getEstado() + "\n";
             
-        String linea="Articulo: "+articulo.getTitulo()+decisionRevisor1+", Comentarios R1: "+revisor1.getComentarios()+decisionRevisor2+", Comentarios R2:"+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+editor.getDecision();
+        String linea="Articulo: "+articulo.getTitulo()+" Decision R1: "+decisionRevisor1+", Comentarios R1: "+revisor1.getComentarios()+" Decision R2:"+decisionRevisor2+", Comentarios R2: "+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+decisionEditor1;
 
-         Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt","\n"+linea );
+         Aplicacion.escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt",linea );
         return informe;
     }
 }
