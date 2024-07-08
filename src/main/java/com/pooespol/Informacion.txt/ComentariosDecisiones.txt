@@ -1,2 +1,6 @@
-Revisor:Pedro Sánchez, Articulo: t, Codigo: 30013, decision del Revisor1: true, comentarios del Revisor1: Fue un articulo estupendo
-Revisor:Juan Pérez, Articulo: t, Codigo: 30013, decision del Revisor2: true, comentarios del Revisor2: Me gusto mucho como termino
+Revisor:Pedro Sánchez, Articulo: t, Codigo: 30041, decision del Revisor1: true, comentarios del Revisor1: Se aprobo debido a tal cosa
+Revisor:Juan Pérez, Articulo: t, Codigo: 30041, decision del Revisor2: true, comentarios del Revisor2: Se aprobo xq me gusto
+Revisor:Pedro Sánchez, Articulo: t, Codigo: 30041, decision del Revisor1: true, comentarios del Revisor1: me gusto
+Revisor:Juan Pérez, Articulo: t, Codigo: 30041, decision del Revisor2: false, comentarios del Revisor2: no me gusto
+Revisor:Arturo Yipez, Articulo: robots, Codigo: 30037, decision del Revisor1: true, comentarios del Revisor1: me gusto
+Revisor:Alejandro Estrada, Articulo: robots, Codigo: 30037, decision del Revisor2: false, comentarios del Revisor2: no me gusto
