@@ -1,15 +1,3 @@
-Articulo: titulo, decision del Revisor1 true, comentarios del Revisor1 nice1
-Articulo: titulo, decision del Revisor2 true, comentarios del Revisor2 nice2
-Articulo: titulo, decision del Editor: true
-Articulo: titulo, decision del Editor: true
-Articulo: ra, decision del Editor: true
-Articulo: ra, decision del Editor: true
 Articulo: t, decision del Editor: true
 
-Articulo: tNo aprobado, Comentarios R1: nullNo aprobado, Comentarios R2:null, Decision de Editor Luis: true
-Articulo: t, decision del Editor: true
-
-Articulo: tNo aprobado, Comentarios R1: nullNo aprobado, Comentarios R2:null, Decision de Editor Luis: true
-Articulo: t, decision del Editor: true
-
-Articulo: tAprobado, Comentarios R1: nice1Aprobado, Comentarios R2:nice2, Decision de Editor Luis: true
+Articulo: tAprobado, Comentarios R1: Fue un articulo estupendoAprobado, Comentarios R2:Me gusto mucho como termino, Decision de Editor Luis: true

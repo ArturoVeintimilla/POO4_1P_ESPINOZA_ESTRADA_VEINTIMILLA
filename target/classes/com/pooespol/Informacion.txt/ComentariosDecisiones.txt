@@ -1,2 +1,2 @@
-Revisor:Pedro Sánchez, Articulo: t, Codigo: 30013, decision del Revisor1: true, comentarios del Revisor1: nice1
-Revisor:Juan Pérez, Articulo: t, Codigo: 30013, decision del Revisor2: true, comentarios del Revisor2: nice2
+Revisor:Pedro Sánchez, Articulo: t, Codigo: 30013, decision del Revisor1: true, comentarios del Revisor1: Fue un articulo estupendo
+Revisor:Juan Pérez, Articulo: t, Codigo: 30013, decision del Revisor2: true, comentarios del Revisor2: Me gusto mucho como termino
