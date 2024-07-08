@@ -150,7 +150,7 @@ public class Editor extends Usuario {
      public void guardarComentarios(Editor editor,int  idArticulo){
         for (Articulo a : ArticuloAsignados) {
             if (a.getCodigoArticulo() == idArticulo) {
-                Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", "Articulo: "+a.getTitulo()+ ", decision del Editor: "+editor.getDecision());
+                Aplicacion.escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", "Articulo: "+a.getTitulo()+ ", decision del Editor: "+editor.getDecision());
                 break; // Salir del bucle una vez encontrado el artículo
             }
         }

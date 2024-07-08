@@ -30,8 +30,8 @@ public class Aplicacion {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        cargarUsuariosDesdeArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
-        cargarArticulos("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt"); // Cargar datos de artículos desde archivo
+        cargarUsuariosDesdeArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
+        cargarArticulos("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt"); // Cargar datos de artículos desde archivo
 
 
         System.out.println("\nBienvenido al sistema de gestión de artículos científicos");
@@ -97,8 +97,8 @@ public class Aplicacion {
         usuarios.add(autor);
 
         autor.someterArticulo(scanner, articulos,autor);
-        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt", "Autor,"+(usuarios.size()+1)+autor.getNombre()+","+autor.getApellido()+","+autor.getCorreo()+","+autor.getInstitucion()+","+autor.getCampoInvestigacion());
-        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt", "Autor,"+usuarios.size()+","+autor.getNombre()+","+autor.getApellido()+","+autor.getCorreo()+","+autor.getInstitucion()+","+autor.getCampoInvestigacion()+"\n");
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
 
         // Asignar revisores al artículo recién sometido
         Articulo articuloReciente = articulos.get(articulos.size() - 1);
@@ -118,11 +118,11 @@ public class Aplicacion {
         Revisor revisor2 = disponibles.get(1);
     
         System.out.println("Revisores asignados automáticamente:");
-        System.out.println("- " + revisor1.getNombre());
-        System.out.println("- " + revisor2.getNombre());
+        System.out.println("- " + revisor1.getNombre()+" "+revisor1.getApellido());
+        System.out.println("- " + revisor2.getNombre()+" "+revisor2.getApellido());
 
-        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor1.toString());
-        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor2.toString());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor1.toString());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revisores.txt", revisor2.toString());
 
     
         // Asignar artículo a los revisores
@@ -141,14 +141,14 @@ public class Aplicacion {
             editorAsignado.setArticuloAsignados(articulos);
             articulo.setEditor(editorAsignado);
             System.out.println("Editor asignado automáticamente:");
-            System.out.println("- " + editorAsignado.getNombre());
+            System.out.println("- " + editorAsignado.getNombre()+" "+editorAsignado.getApellido());
     
             // Agregar editor al artículo
             articulo.setEditor(editorAsignado);
         } else {
             System.out.println("No hay editores disponibles para asignar a este artículo.");
         }
-        escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt", "\n"+articulo.toString()+ ", Revisor1 :"+articulo.getRevisores().get(0).getNombre()+" "+articulo.getRevisores().get(0).getApellido()+", Revisor2: "+articulo.getRevisores().get(1).getNombre()+" "+articulo.getRevisores().get(1).getApellido()+","+" Editor :"+articulo.getEditor().getNombre()+" "+articulo.getEditor().getApellido());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt", articulo.toString()+ ", Revisor1 :"+articulo.getRevisores().get(0).getNombre()+" "+articulo.getRevisores().get(0).getApellido()+", Revisor2: "+articulo.getRevisores().get(1).getNombre()+" "+articulo.getRevisores().get(1).getApellido()+","+" Editor :"+articulo.getEditor().getNombre()+" "+articulo.getEditor().getApellido());
 
         enviarCorreo(revisor1.getCorreo(), "Nuevo artículo asignado para revisión", "Estimado revisor,\n\nSe les ha asignado el artículo \"" 
         + articulo.getTitulo() + "\" para revisión. Por favor, revisen su cuenta para más detalles.\n\nSaludos,\nSistema de Gestión de Artículos Científicos");
@@ -218,13 +218,13 @@ public class Aplicacion {
                 System.out.println("Ingrese el id del articulo");
                 int idArticulo=sc.nextInt();
                 sc.nextLine();
-                procesarComentariosDecisiones("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
+                procesarComentariosDecisiones("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
                 editor.tareaAsignada(idArticulo);
                 editor.guardarComentarios(editor, idArticulo);
                 verEstadoArticulo(idArticulo);
 
                 //Escribir el archivo Editores.txt
-                escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Editores.txt", editor.toString());
+                escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Editores.txt", editor.toString());
                 
                 
             } else if (usuarioEncontrado instanceof Revisor) {
@@ -326,7 +326,7 @@ public class Aplicacion {
     
                     switch (tipoUsuario) {
                         case "Autor":
-                            if (datos.length >= 9) {
+                            if (datos.length >= 6) {
                                 String institucion = datos[5].trim();
                                 String campoInvestigacion = datos[6].trim();
                                 Autor autor = new Autor(codigoID, nombre, apellido, correo, institucion, campoInvestigacion);
@@ -442,42 +442,33 @@ public class Aplicacion {
     private static void procesarComentariosDecisiones(String nombreArchivo, int idArticulo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
-            boolean encontrado = false;
             
             while ((linea = br.readLine()) != null) {
-                if (linea.startsWith("Articulo:")) {
+                if (linea.contains("Codigo: " + idArticulo)) {
                     String[] partes = linea.split(", ");
-                    int id = Integer.parseInt(partes[0].split(":")[1].trim());
                     
-                    if (id == idArticulo) {
-                        String nombreRevisor = partes[0].split(" ")[1].trim();
-                        boolean decisionRevisor = Boolean.parseBoolean(partes[1].split(":")[1].trim());
-                        String comentarios = partes[2].split(":")[1].trim();
-                        
-                        // Buscar el revisor por nombre y actualizar su decisión y comentarios
-                        for (Articulo a : articulos) {
-                            if (a.getCodigoArticulo() == idArticulo) {
-                                for (Revisor revisor : a.getRevisores()) {
-                                    if (revisor.getNombre().equals(nombreRevisor)) {
-                                        revisor.setdecision(decisionRevisor);
-                                        revisor.agregarComentarios(comentarios);
-                                        encontrado = true;
-                                        break;
-                                    }
-                                }
-                                if (encontrado) {
+                    // Buscar el artículo por ID y actualizar los revisores
+                    for (Articulo a : articulos) {
+                        if (a.getCodigoArticulo() == idArticulo) {
+                            // Obtener nombre del revisor, decisión y comentarios
+                            String nombreRevisor = partes[0].split(":")[1].split(" ")[0];
+                            boolean decisionRevisor = Boolean.parseBoolean(partes[3].split(":")[1].trim());
+                            String comentarios = partes[4].split(":")[1].trim();
+                            
+                            // Actualizar el revisor correspondiente
+                            for (Revisor revisor : a.getRevisores()) {
+                                if (revisor.getNombre().equals(nombreRevisor)) {
+                                    revisor.setdecision(decisionRevisor);
+                                    revisor.agregarComentarios(comentarios);
                                     break;
+                                } else{
+                                    System.out.println(revisor.getNombre());
+                                    System.out.println(nombreRevisor);
                                 }
                             }
                         }
                     }
                 }
-            }
-            
-            if (!encontrado) {
-                System.out.println("No se encontraron comentarios y decisiones para el artículo con ID " + idArticulo);
-            } else {
-                System.out.println("Comentarios y decisiones procesados correctamente para el artículo con ID " + idArticulo);
             }
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
@@ -485,5 +476,8 @@ public class Aplicacion {
             System.out.println("Error de formato numérico en el archivo: " + e.getMessage());
         }
     }
+    
+    
+    
     
 }

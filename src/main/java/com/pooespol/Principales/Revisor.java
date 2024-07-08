@@ -140,6 +140,6 @@ public class Revisor extends Usuario {
     public void guardarComentarios(Revisor revisor){
         int i= revisor.getArticuloAsignados().getRevisores().indexOf(revisor);
         i+=1;
-        Aplicacion.escribirArchivo("C:\\VisualStudioCode\\proyecto\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt","Revisor:"+revisor.getNombre()+" "+ revisor.getApellido()+", Articulo: "+revisor.getArticuloAsignados().getTitulo()+ ", decision del Revisor"+i+": "+revisor.getDecision()+", comentarios del Revisor"+i+": "+revisor.getComentarios());
+        Aplicacion.escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt","Revisor:"+revisor.getNombre()+" "+ revisor.getApellido()+", Articulo: "+articuloAsignado.getTitulo()+", Codigo: "+articuloAsignado.getCodigoArticulo()+", decision del Revisor"+i+": "+revisor.getDecision()+", comentarios del Revisor"+i+": "+revisor.getComentarios());
     }
 }

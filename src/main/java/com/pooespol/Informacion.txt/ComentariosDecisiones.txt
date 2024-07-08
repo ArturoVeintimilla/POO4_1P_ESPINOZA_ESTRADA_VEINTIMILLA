@@ -1,2 +1,2 @@
-Revisor:Juan Pérez, Articulo: titulo, decision del Revisor2: true, comentarios del Revisor2: nice2
-Revisor:Pedro Sánchez, Articulo: titulo, decision del Revisor1: true, comentarios del Revisor1: nice1
+Revisor:Pedro Sánchez, Articulo: t, Codigo: 30013, decision del Revisor1: true, comentarios del Revisor1: nice1
+Revisor:Juan Pérez, Articulo: t, Codigo: 30013, decision del Revisor2: true, comentarios del Revisor2: nice2
