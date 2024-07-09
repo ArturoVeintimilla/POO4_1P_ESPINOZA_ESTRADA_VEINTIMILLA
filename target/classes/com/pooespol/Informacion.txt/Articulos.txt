@@ -1,2 +1,2 @@
 --------------ARTICULO SUBIDOS----------------------
-El Articulo con Titulo='hola', Autor:a a, codigo del Articulo=30051, resumen='hola', contenido='hola', palabrasClave='hola', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Elena García
+El Articulo con Titulo='hola', Autor:a a, codigo del Articulo=43, resumen='hola', contenido='hola', palabrasClave='hola', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Luis Ramírez

@@ -3,7 +3,6 @@ package com.pooespol.Principales;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.pooespol.Main.Aplicacion;
 import com.pooespol.Publicacion.Articulo;
 import com.pooespol.Tipos.EstadoArticulo;
 import com.pooespol.Tipos.TipoDeRol;
