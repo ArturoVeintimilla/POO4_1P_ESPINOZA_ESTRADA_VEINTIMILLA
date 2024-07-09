@@ -15,6 +15,8 @@ public class Editor extends Usuario {
     private String userAcceso;
     private String contrasena;
     private TipoDeRol tipoRol;
+    private boolean decisionTomada;
+
     
     public static  Scanner sc = new Scanner(System.in);
 
@@ -33,6 +35,9 @@ public class Editor extends Usuario {
     public String getUserAcesso(){
         return userAcceso;
     }
+    public boolean getDecisionTomada() {
+        return decisionTomada;
+    }
     public void setUserAcceso(String user){
         this.userAcceso=user;
 
@@ -46,6 +51,10 @@ public class Editor extends Usuario {
     public void setdecision(boolean decision) {
         this.decision=decision;
     }
+
+    public void setDecisionTomada(boolean decisionTomada) {
+        this.decisionTomada=decisionTomada;
+    } 
     public TipoDeRol getTipoDeRol(){
         return tipoRol;
     }
@@ -75,7 +84,13 @@ public class Editor extends Usuario {
     public void tareaAsignada(int idArticulo) {
         System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);
         boolean articuloEncontrado = false;
-    
+        String decisionEditor;
+        if( getDecision()){
+            decisionEditor= "aprobado";
+        } else{
+            decisionEditor= "no aprobado";
+        }
+        System.out.println(decisionEditor);
         for (Articulo a : ArticuloAsignados) {
             if (a.getCodigoArticulo() == idArticulo) {
                 articuloEncontrado = true;
@@ -91,8 +106,13 @@ public class Editor extends Usuario {
                 }
                 
                 System.out.println("");
-                this.decision = tomarDecision(a);
-                break; // Salir del bucle una vez encontrado el artículo
+                if(decisionTomada== false){
+                    this.decision = tomarDecision(a);
+                    decisionTomada=true;
+                    break; // Salir del bucle una vez encontrado el artículo
+                } else{
+                    System.out.println("Ya has tomado la decicsion sobre este articulo, revisa los otros articulos asignados y en caso de no tener, espere a mas articulos. Muchas Gracias.");
+                }
             }
         }
     
@@ -143,19 +163,9 @@ public class Editor extends Usuario {
             }
             break; // Salir del bucle 
 
-
-         }
-     }
-        
-     public void guardarComentarios(Editor editor,int  idArticulo){
-        for (Articulo a : ArticuloAsignados) {
-            if (a.getCodigoArticulo() == idArticulo) {
-                Aplicacion.escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", "Articulo: "+a.getTitulo()+ ", decision del Editor: "+editor.getDecision());
-                break; // Salir del bucle una vez encontrado el artículo
-            }
         }
     }
-
+        
     @Override
     public String toString() {
         return "Editor: " +super.toString()+

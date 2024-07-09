@@ -1,6 +1,1 @@
-Articulo: t, decision del Editor: true
-Articulo: t Decision R1: Aprobado, Comentarios R1: Se aprobo debido a tal cosa Decision R2:Aprobado, Comentarios R2: Se aprobo xq me gusto, Decision de Editor Luis: Aprobado
-Articulo: robots, decision del Editor: true
-Articulo: robots Decision R1: No aprobado, Comentarios R1: null Decision R2:No aprobado, Comentarios R2: null, Decision de Editor Luis: Aprobado
-Articulo: robots, decision del Editor: false
-Articulo: robots Decision R1: Aprobado, Comentarios R1: me gusto Decision R2:No aprobado, Comentarios R2: no me gusto, Decision de Editor Luis: No aprobado
+---------------PROCESO DE REVISION---------------------------

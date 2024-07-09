@@ -1,6 +1,3 @@
-Revisor:Pedro Sánchez, Articulo: t, Codigo: 30041, decision del Revisor1: true, comentarios del Revisor1: Se aprobo debido a tal cosa
-Revisor:Juan Pérez, Articulo: t, Codigo: 30041, decision del Revisor2: true, comentarios del Revisor2: Se aprobo xq me gusto
-Revisor:Pedro Sánchez, Articulo: t, Codigo: 30041, decision del Revisor1: true, comentarios del Revisor1: me gusto
-Revisor:Juan Pérez, Articulo: t, Codigo: 30041, decision del Revisor2: false, comentarios del Revisor2: no me gusto
-Revisor:Arturo Yipez, Articulo: robots, Codigo: 30037, decision del Revisor1: true, comentarios del Revisor1: me gusto
-Revisor:Alejandro Estrada, Articulo: robots, Codigo: 30037, decision del Revisor2: false, comentarios del Revisor2: no me gusto
+---------------COMENTARIOS Y DECISIONES DE LOS REVISORES---------------------------
+Revisor:Pedro Sánchez, Articulo: hola, Codigo: 30051, decision del Revisor1: true, comentarios del Revisor1: si, decision ya tomada: true
+Revisor:Juan Pérez, Articulo: hola, Codigo: 30051, decision del Revisor2: true, comentarios del Revisor2: me gusto, decision ya tomada: true

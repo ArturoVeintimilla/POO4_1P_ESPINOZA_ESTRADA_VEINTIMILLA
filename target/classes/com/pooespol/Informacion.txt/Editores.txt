@@ -1,3 +1,2 @@
-Editor: Nombre='Luis', apellido='Ramírez', correo='luis232474824@gmail.com' , nombreJournal='Journal A'
-Editor: Nombre='Luis', apellido='Ramírez', correo='luis232474824@gmail.com' , nombreJournal='Journal A'
-Editor: Nombre='Luis', apellido='Ramírez', correo='luis232474824@gmail.com' , nombreJournal='Journal A'
+---------------Editores---------------------------
+Editor: Nombre='Elena', apellido='García', correo='elena@gmail.com' , nombreJournal='Journal B'

@@ -1,3 +1,2 @@
---------------Articulos----------------------
- El Articulo con Titulo='t', Autor:roberto estrada, codigo del Articulo=30041, resumen='rt', contenido='c', palabrasClave='clave', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Luis Ramírez
- El Articulo con Titulo='robots', Autor:alejandro Steven, codigo del Articulo=30037, resumen='r', contenido='c', palabrasClave='claves', estado=SINREVISION fue sometido existosamente, Revisor1 :Arturo Yipez, Revisor2: Alejandro Estrada, Editor :Luis Ramírez
+--------------ARTICULO SUBIDOS----------------------
+El Articulo con Titulo='hola', Autor:a a, codigo del Articulo=30051, resumen='hola', contenido='hola', palabrasClave='hola', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Elena García

@@ -1,5 +1,4 @@
-Autor,1,Carlos,González,carlos@example.com,Universidad X,Física
-Autor,2,Ana,Martínez,ana@example.com,Instituto Y,Química
+---------------USUARIOS---------------------------
 Revisor,3,Pedro,Sánchez,pedro232474824@gmail.com,revisor1,abcd1234,Biología
 Revisor,4,Juan,Pérez,juan232474824@gmail.com,revisor2,efgh5678,Química
 Editor,5,Luis,Ramírez,luis232474824@gmail.com,editor1,wxyz1234,Journal A
@@ -8,5 +7,4 @@ Editor,7,Gianluca,Espinoza,gianlu@gmail.com,editor3,mnop9012,Journal C
 Editor,8,Sebastian,Toaza,sebastoa@gmail.com,editor4,qrst3456,Journal D
 Revisor,9,Arturo,Yipez,artyi@gmail.com,revisor3,ijkl7654,Biología
 Revisor,10,Alejandro,Estrada,alest@gmail.com,revisor4,poiu3423,Fisica
-Autor,11,roberto,estrada,re@gmail.com,espol,cienciaAutor,12,alejandro,Steven,as@gmail.com,espol,ciencia
-
+Autor,9,a,a,a@espol.edu.ec,espol,ciencia

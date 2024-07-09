@@ -57,7 +57,7 @@ public class Aplicacion {
         }
     }
 
-    private static void mostrarMenu() {
+    public static void mostrarMenu() {
         System.out.println("\nOpciones disponibles:");
         System.out.println("1. Someter artículo");
         System.out.println("2. Iniciar sesión");
@@ -65,7 +65,7 @@ public class Aplicacion {
         System.out.print("Ingrese la opción deseada: ");
     }
 
-    private static int obtenerOpcion(Scanner sc) {
+    public static int obtenerOpcion(Scanner sc) {
         while (true) {
             try {
                 return Integer.parseInt(sc.nextLine());
@@ -75,7 +75,7 @@ public class Aplicacion {
         }
     }
 
-    private static void someterArticulo(Scanner scanner) {
+    public static void someterArticulo(Scanner scanner) {
         System.out.println("\nRegistro de datos del autor:");
         System.out.print("Nombre: ");
         String nombreAutor = scanner.nextLine();
@@ -97,15 +97,15 @@ public class Aplicacion {
         usuarios.add(autor);
 
         autor.someterArticulo(scanner, articulos,autor);
-        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt", "Autor,"+usuarios.size()+","+autor.getNombre()+","+autor.getApellido()+","+autor.getCorreo()+","+autor.getInstitucion()+","+autor.getCampoInvestigacion()+"\n");
-        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt", "Investigador: "+autor.toString());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt", "Autor,"+usuarios.size()+","+autor.getNombre()+","+autor.getApellido()+","+autor.getCorreo()+","+autor.getInstitucion()+","+autor.getCampoInvestigacion());
+        escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Investigadores.txt",  "Investigador: "+autor.toString());
 
         // Asignar revisores al artículo recién sometido
         Articulo articuloReciente = articulos.get(articulos.size() - 1);
         asignarRevisores(articuloReciente);
     }
 
-    private static void asignarRevisores(Articulo articulo) {
+    public static void asignarRevisores(Articulo articulo) {
         ArrayList<Revisor> disponibles = obtenerRevisoresDisponibles();
         articulos.add(articulo);
     
@@ -136,12 +136,15 @@ public class Aplicacion {
         // Asignar un editor al artículo
         ArrayList<Editor> editoresDisponibles = obtenerEditoresDisponibles();
         if (!editoresDisponibles.isEmpty()) {
-            Editor editorAsignado = editoresDisponibles.get(0); // Simplemente asignamos el primer editor disponible
+            Random r=new Random();
+            int i= r.nextInt(editoresDisponibles.size()-1);
+            Editor editorAsignado = editoresDisponibles.get(i); // Simplemente asignamos el primer editor disponible
     
             editorAsignado.setArticuloAsignados(articulos);
             articulo.setEditor(editorAsignado);
             System.out.println("Editor asignado automáticamente:");
             System.out.println("- " + editorAsignado.getNombre()+" "+editorAsignado.getApellido());
+            escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Editores.txt",editorAsignado.toString());
     
             // Agregar editor al artículo
             articulo.setEditor(editorAsignado);
@@ -159,7 +162,7 @@ public class Aplicacion {
 
     }
     
-    private static ArrayList<Revisor>  obtenerRevisoresDisponibles() {
+    public static ArrayList<Revisor>  obtenerRevisoresDisponibles() {
         ArrayList<Revisor>  disponibles = new ArrayList<>();
         for (Usuario usuario : usuarios) {
             if (usuario instanceof Revisor) {
@@ -172,7 +175,7 @@ public class Aplicacion {
         return disponibles;
     }
 
-    private static ArrayList<Editor> obtenerEditoresDisponibles() {
+    public static ArrayList<Editor> obtenerEditoresDisponibles() {
         ArrayList<Editor> disponibles = new ArrayList<>();
         for (Usuario usuario : usuarios) {
             if (usuario instanceof Editor) {
@@ -185,7 +188,7 @@ public class Aplicacion {
         return disponibles;
     }
 
-    private static void iniciarSesion() {
+    public static void iniciarSesion() {
         System.out.print("Usuario: ");
         String usuario = sc.nextLine();
         System.out.print("Contraseña: ");
@@ -219,19 +222,16 @@ public class Aplicacion {
                 int idArticulo=sc.nextInt();
                 sc.nextLine();
                 procesarComentariosDecisiones("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
+                procesarComentariosDecisiones("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", idArticulo);          
                 editor.tareaAsignada(idArticulo);
-                editor.guardarComentarios(editor, idArticulo);
-                verEstadoArticulo(idArticulo);
-
-                //Escribir el archivo Editores.txt
-                escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\Editores.txt", editor.toString());
-                
-                
+                if(editor.getDecisionTomada() && editor.getDecision()){
+                    verEstadoArticulo(idArticulo);                
+                }
             } else if (usuarioEncontrado instanceof Revisor) {
                 Revisor revisor = (Revisor) usuarioEncontrado;
                 revisor.tareaAsignada();
 
-                if(revisor.getArticuloAsignados()!=null){
+                if(revisor.getArticuloAsignados()!=null&& revisor.getComentarios()==null){
                     System.out.println("Agregue comentarios sobre el artículo:");
                     String comentario = sc.nextLine();
                     revisor.agregarComentarios(comentario);
@@ -244,7 +244,7 @@ public class Aplicacion {
             System.out.println("Usuario o contraseña incorrectos.");
         }
     }
-    private static void verEstadoArticulo(int idArticulo) {
+    public static void verEstadoArticulo(int idArticulo) {
         
 
         boolean encontrado = false;
@@ -268,7 +268,7 @@ public class Aplicacion {
         sc.nextLine();
     }
 
-   private static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
+    public static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
@@ -302,18 +302,48 @@ public class Aplicacion {
             throw new RuntimeException(e);
         }
     }
-     public static void escribirArchivo(String nombreArchivo, String contenido) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
-            writer.write(contenido);
-            writer.newLine();
+    public static void escribirArchivo(String nombreArchivo, String contenido) {
+        try {
+            // Leer el contenido existente del archivo
+            BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo));
+            StringBuilder contenidoExistente = new StringBuilder();
+            String primeraLinea = reader.readLine();
+            boolean primeraLineaVacia = (primeraLinea == null || primeraLinea.isEmpty());
+
+            // Si la primera línea no está vacía, agregarla al contenido existente
+            if (primeraLinea != null) {
+                contenidoExistente.append(primeraLinea).append(System.lineSeparator());
+            }
+
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                contenidoExistente.append(linea).append(System.lineSeparator());
+            }
+            reader.close();
+
+            // Abrir el archivo para escribir
+            BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo));
+            if (primeraLineaVacia) {
+                // Si la primera línea está vacía, escribir el nuevo contenido en la primera línea
+                writer.write(contenido);
+            } else {
+                // Si la primera línea no está vacía, escribir el contenido existente
+                writer.write(contenidoExistente.toString());
+                // Y luego escribir el nuevo contenido en la segunda línea
+                writer.write(contenido);
+            }
+            writer.newLine(); // Nueva línea después del nuevo contenido
+            writer.close();
+
         } catch (IOException e) {
             System.out.println("Error al escribir en el archivo " + nombreArchivo);
             e.printStackTrace();
         }
-    } 
+    }
 
-    private static void cargarUsuariosDesdeArchivo(String nombreArchivo) {
+    public static void cargarUsuariosDesdeArchivo(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            br.readLine();
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(",");
@@ -360,8 +390,6 @@ public class Aplicacion {
                         default:
                             System.out.println("Tipo de usuario desconocido en el archivo: " + tipoUsuario);
                     }
-                } else {
-                    System.out.println("Error en el formato de línea del archivo: " + linea);
                 }
             }
         } catch (IOException e) {
@@ -371,7 +399,7 @@ public class Aplicacion {
         }
     }
 
-    private static void cargarArticulos(String nombreArchivo) {
+    public static void cargarArticulos(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             br.readLine();
             String linea;
@@ -431,7 +459,7 @@ public class Aplicacion {
         }
     }
     
-    private static Usuario obtenerUsuarioPorNombre(String nombre, String apellido) {
+    public static Usuario obtenerUsuarioPorNombre(String nombre, String apellido) {
         for (Usuario usuario : usuarios) {
             if (usuario.getNombre().equalsIgnoreCase(nombre) && usuario.getApellido().equalsIgnoreCase(apellido)) {
                 return usuario;
@@ -439,8 +467,9 @@ public class Aplicacion {
         }
         return null;
     }
-    private static void procesarComentariosDecisiones(String nombreArchivo, int idArticulo) {
+    public static void procesarComentariosDecisiones(String nombreArchivo, int idArticulo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            br.readLine();
             String linea;
             
             while ((linea = br.readLine()) != null) {
@@ -448,25 +477,40 @@ public class Aplicacion {
                     String[] partes = linea.split(", ");
                     
                     // Buscar el artículo por ID y actualizar los revisores
-                    for (Articulo a : articulos) {
-                        if (a.getCodigoArticulo() == idArticulo) {
-                            // Obtener nombre del revisor, decisión y comentarios
-                            String nombreRevisor = partes[0].split(":")[1].split(" ")[0];
-                            boolean decisionRevisor = Boolean.parseBoolean(partes[3].split(":")[1].trim());
-                            String comentarios = partes[4].split(":")[1].trim();
-                            
-                            // Actualizar el revisor correspondiente
-                            for (Revisor revisor : a.getRevisores()) {
-                                if (revisor.getNombre().equals(nombreRevisor)) {
-                                    revisor.setdecision(decisionRevisor);
-                                    revisor.agregarComentarios(comentarios);
-                                    break;
-                                } else{
-                                    System.out.println(revisor.getNombre());
-                                    System.out.println(nombreRevisor);
+                    if(partes.length == 6 ){
+                        for (Articulo a : articulos) {
+                            if (a.getCodigoArticulo() == idArticulo) {
+                                // Obtener nombre del revisor, decisión y comentarios
+                                String nombreRevisor = partes[0].split(":")[1].split(" ")[0];
+                                boolean decisionRevisor = Boolean.parseBoolean(partes[3].split(":")[1].trim());
+                                boolean decisionTomada = Boolean.parseBoolean(partes[5].split(":")[1].trim());
+                                String comentarios = partes[4].split(":")[1].trim();
+                                
+                                // Actualizar el revisor correspondiente
+                                for (Revisor revisor : a.getRevisores()) {
+                                    if (revisor.getNombre().equals(nombreRevisor)) {
+                                        revisor.setdecision(decisionRevisor);
+                                        revisor.agregarComentarios(comentarios);
+                                        revisor.setDecisionTomada(decisionTomada);
+                                        break;
+                                    } 
                                 }
                             }
                         }
+                    }else if( partes.length==7){
+                        for (Articulo a : articulos) {
+                            if (a.getCodigoArticulo() == idArticulo) {
+                                // Obtener nombre del revisor, decisión y comentarios
+                                boolean decisionEditor = Boolean.parseBoolean(partes[6].split(":")[1].trim());
+                                boolean decisionTomada = Boolean.parseBoolean(partes[5].split(":")[1].trim());
+                                Editor editor=a.getEditor();
+                                editor.setdecision(decisionEditor);
+                                editor.setDecisionTomada(decisionTomada);
+                                    
+                            } 
+                                
+                        }
+
                     }
                 }
             }
@@ -476,8 +520,6 @@ public class Aplicacion {
             System.out.println("Error de formato numérico en el archivo: " + e.getMessage());
         }
     }
-    
-    
-    
+
     
 }

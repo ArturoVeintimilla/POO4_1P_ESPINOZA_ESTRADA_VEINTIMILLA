@@ -1,3 +1,2 @@
----------------Investigadores---------------------------
-Investigador: Nombre='roberto', apellido='estrada', correo='re@gmail.com' , institucion='espol', campoInvestigacion='ciencia' 
-Investigador: Nombre='alejandro', apellido='Steven', correo='as@gmail.com' , institucion='espol', campoInvestigacion='ciencia' 
+---------------INVESTIGADORES---------------------------
+Investigador: Nombre='a', apellido='a', correo='a@espol.edu.ec' , institucion='espol', campoInvestigacion='ciencia' 

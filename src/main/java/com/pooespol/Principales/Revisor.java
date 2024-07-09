@@ -16,6 +16,7 @@ public class Revisor extends Usuario {
     private Articulo articuloAsignado; // Nuevo atributo para almacenar el artículo asignado al revisor
     private boolean decision;
     private String comentarios; // Nuevo atributo para almacenar los comentarios del revisor
+    private boolean decisionTomada;
     public static  Scanner sc = new Scanner(System.in);
 
 
@@ -55,6 +56,13 @@ public class Revisor extends Usuario {
     public void setdecision(boolean decision) {
         this.decision=decision;
     } 
+    public boolean getDecisionTomada() {
+        return decisionTomada;
+    }
+
+    public void setDecisionTomada(boolean decisionTomada) {
+        this.decisionTomada=decisionTomada;
+    } 
     public String getComentarios() {
         return comentarios;
     }
@@ -80,6 +88,7 @@ public class Revisor extends Usuario {
     public TipoDeRol getTipoDeRol(){
         return tipoRol;
     }
+
     
     public boolean IniciarSesion(String user, String password){
         if (userAcceso.equals(user)&& contrasena.equals(password)){
@@ -91,12 +100,17 @@ public class Revisor extends Usuario {
 
     @Override
     public void tareaAsignada() {
-        if (articuloAsignado != null) {
+        int idArticulo= articuloAsignado.getCodigoArticulo();
+        Aplicacion.procesarComentariosDecisiones("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);     
+        if (articuloAsignado != null && decisionTomada==false) {
             System.out.println("Revisión de artículo asignada: " + articuloAsignado.getTitulo());
             mostrarDetalleArticulo();
             tomarDecision();
+            decisionTomada=true;
             
-        } else {
+        } else if(decisionTomada) {
+            System.out.println("Ya has tomado la decicsion sobre este articulo, muchas gracias.");
+        }else {
             System.out.println("No se ha asignado ningún artículo para revisar.");
         }
     }
@@ -140,6 +154,6 @@ public class Revisor extends Usuario {
     public void guardarComentarios(Revisor revisor){
         int i= revisor.getArticuloAsignados().getRevisores().indexOf(revisor);
         i+=1;
-        Aplicacion.escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt","Revisor:"+revisor.getNombre()+" "+ revisor.getApellido()+", Articulo: "+articuloAsignado.getTitulo()+", Codigo: "+articuloAsignado.getCodigoArticulo()+", decision del Revisor"+i+": "+revisor.getDecision()+", comentarios del Revisor"+i+": "+revisor.getComentarios());
+        Aplicacion.escribirArchivo("C:\\Users\\Estra\\proyectopoo\\POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt","Revisor:"+revisor.getNombre()+" "+ revisor.getApellido()+", Articulo: "+articuloAsignado.getTitulo()+", Codigo: "+articuloAsignado.getCodigoArticulo()+", decision del Revisor"+i+": "+revisor.getDecision()+", comentarios del Revisor"+i+": "+revisor.getComentarios()+", decision ya tomada: "+decisionTomada );
     }
 }
