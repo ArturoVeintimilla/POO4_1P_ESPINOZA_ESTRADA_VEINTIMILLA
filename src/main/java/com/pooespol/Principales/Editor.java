@@ -15,49 +15,9 @@ public class Editor extends Usuario {
     private String contrasena;
     private TipoDeRol tipoRol;
     private boolean decisionTomada;
-
-    
     public static  Scanner sc = new Scanner(System.in);
 
-    public void setArticuloAsignados(ArrayList<Articulo> articulo) {
-        this.ArticuloAsignados = articulo;
-    }
-    public ArrayList<Articulo> getArticulosAsignado() {
-        return ArticuloAsignados;
-    }
-    public String getNombreJournal() {
-        return nombreJournal;
-    }
-    public boolean getDecision() {
-        return decision;
-    }
-    public String getUserAcesso(){
-        return userAcceso;
-    }
-    public boolean getDecisionTomada() {
-        return decisionTomada;
-    }
-    public void setUserAcceso(String user){
-        this.userAcceso=user;
-
-    }
-    public String getContrasena(){
-        return contrasena;
-    }
-    public void setContraseña( String password){
-        this.contrasena=password;
-    }
-    public void setdecision(boolean decision) {
-        this.decision=decision;
-    }
-
-    public void setDecisionTomada(boolean decisionTomada) {
-        this.decisionTomada=decisionTomada;
-    } 
-    public TipoDeRol getTipoDeRol(){
-        return tipoRol;
-    }
-
+    //Constructor de la clase
     public Editor(String nombre, String apellido, String correo, String userAcceso, String contrasena, String nombreJournal) {
         super(nombre, apellido, correo);
         this.tipoRol=TipoDeRol.E;
@@ -67,6 +27,58 @@ public class Editor extends Usuario {
         this.ArticuloAsignados = new ArrayList<>(); // Inicialmente no tiene artículo asignado
 
     }
+    
+    //Getters y Setters
+    public void setArticuloAsignados(ArrayList<Articulo> articulo) {
+        this.ArticuloAsignados = articulo;
+    }
+    
+    public ArrayList<Articulo> getArticulosAsignado() {
+        return ArticuloAsignados;
+    }
+    
+    public String getNombreJournal() {
+        return nombreJournal;
+    }
+    
+    public boolean getDecision() {
+        return decision;
+    }
+    
+    public String getUserAcesso(){
+        return userAcceso;
+    }
+    
+    public boolean getDecisionTomada() {
+        return decisionTomada;
+    }
+    
+    public void setUserAcceso(String user){
+        this.userAcceso=user;
+
+    }
+    
+    public String getContrasena(){
+        return contrasena;
+    }
+    
+    public void setContraseña( String password){
+        this.contrasena=password;
+    }
+    
+    public void setdecision(boolean decision) {
+        this.decision=decision;
+    }
+
+    public void setDecisionTomada(boolean decisionTomada) {
+        this.decisionTomada=decisionTomada;
+    } 
+    
+    public TipoDeRol getTipoDeRol(){
+        return tipoRol;
+    }
+    
+    //Metodos
     public boolean IniciarSesion(String user, String password){
         if (userAcceso.equals(user)&& contrasena.equals(password)){
             return true;
@@ -148,6 +160,7 @@ public class Editor extends Usuario {
         
     
     }
+    
     public void mostrarDetalleArticulo(int idArticulo) {
         for(Articulo a: ArticuloAsignados){
             if(a.getCodigoArticulo()==idArticulo){

@@ -17,6 +17,7 @@ public class Articulo {
     private ArrayList<Revisor> revisores;
     private Editor editor;
 
+     //Constructor de la clase
     public Articulo(Autor autor ,int codigoArticulo, String titulo, String resumen, String contenido, String palabrasClave) {
         this.autor=autor;
         this.codigoArticulo = codigoArticulo;
@@ -28,6 +29,8 @@ public class Articulo {
         this.editor = null; // Inicialmente no tiene editor asignado
         this.estado=EstadoArticulo.SINREVISION;
     }
+    
+    //Getters y Setters
     public Autor getAutor() {
         return autor;
     }
@@ -59,7 +62,8 @@ public class Articulo {
     public void setEstado(EstadoArticulo estado) {
         this.estado = estado;
     }
-     public void agregarRevisor(Revisor revisor) {
+    
+    public void agregarRevisor(Revisor revisor) {
         revisores.add(revisor);
     }
 
@@ -67,7 +71,6 @@ public class Articulo {
         return revisores;
     }
 
-    // Métodos para manejar editor
     public void setEditor(Editor editor) {
         this.editor = editor;
     }
@@ -76,7 +79,7 @@ public class Articulo {
         return editor;
     }
 
-    
+    //Metodos
     @Override
     public String toString() {
         return "El Articulo con " +

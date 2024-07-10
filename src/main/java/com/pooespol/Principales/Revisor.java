@@ -19,7 +19,7 @@ public class Revisor extends Usuario {
     private boolean decisionTomada;
     public static  Scanner sc = new Scanner(System.in);
 
-
+    //Constructor de la clase
     public Revisor(String nombre, String apellido, String correo, String userAcceso, String contrasena, String especialidad) {
         super(nombre, apellido, correo);
         this.tipoRol=TipoDeRol.R;
@@ -29,7 +29,8 @@ public class Revisor extends Usuario {
         this.numeroArticulosRevisados = 0;
         this.articuloAsignado = null; // Inicialmente no tiene artículo asignado
     }
-
+    
+    //Getters y Setters
     public String getEspecialidad() {
         return especialidad;
     }
@@ -45,6 +46,7 @@ public class Revisor extends Usuario {
     public void setArticuloAsignados(Articulo articulo) {
         this.articuloAsignado = articulo;
     }
+   
     public Articulo getArticuloAsignados() {
         return articuloAsignado;
     }
@@ -56,6 +58,7 @@ public class Revisor extends Usuario {
     public void setdecision(boolean decision) {
         this.decision=decision;
     } 
+    
     public boolean getDecisionTomada() {
         return decisionTomada;
     }
@@ -63,6 +66,7 @@ public class Revisor extends Usuario {
     public void setDecisionTomada(boolean decisionTomada) {
         this.decisionTomada=decisionTomada;
     } 
+    
     public String getComentarios() {
         return comentarios;
     }
@@ -70,13 +74,16 @@ public class Revisor extends Usuario {
     public void agregarComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
+    
     public String getUserAcesso(){
         return userAcceso;
     }
+    
     public void setUserAcceso(String user){
         this.userAcceso=user;
 
     }
+    
     public String getContrasena(){
         return contrasena;
     }
@@ -89,7 +96,7 @@ public class Revisor extends Usuario {
         return tipoRol;
     }
 
-    
+    //Metodos
     public boolean IniciarSesion(String user, String password){
         if (userAcceso.equals(user)&& contrasena.equals(password)){
             return true;
@@ -101,7 +108,7 @@ public class Revisor extends Usuario {
     @Override
     public void tareaAsignada() {
         int idArticulo= articuloAsignado.getCodigoArticulo();
-        Aplicacion.procesarComentariosDecisiones("src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);     
+        Aplicacion.procesarDecisionesTomadas("src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);     
         if (articuloAsignado != null && decisionTomada==false) {
             System.out.println("Revisión de artículo asignada: " + articuloAsignado.getTitulo());
             mostrarDetalleArticulo();
@@ -134,6 +141,7 @@ public class Revisor extends Usuario {
         System.out.println("Su decisión ha sido registrada.");
         return decision;
     }
+
     public void mostrarDetalleArticulo() {
         if (articuloAsignado != null) {
             System.out.println("\nDetalles del artículo asignado:");
@@ -151,6 +159,7 @@ public class Revisor extends Usuario {
         return "Revisor: "+super.toString()+
                 ", especialidad='" + especialidad + '\'' ;
     }
+    
     public void guardarComentarios(Revisor revisor){
         int i= revisor.getArticuloAsignados().getRevisores().indexOf(revisor);
         i+=1;

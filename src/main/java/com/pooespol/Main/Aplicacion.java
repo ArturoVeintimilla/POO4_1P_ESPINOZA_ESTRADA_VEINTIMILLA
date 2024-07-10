@@ -221,8 +221,8 @@ public class Aplicacion {
                 System.out.println("Ingrese el id del articulo");
                 int idArticulo=sc.nextInt();
                 sc.nextLine();
-                procesarComentariosDecisiones("src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
-                procesarComentariosDecisiones("src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", idArticulo);          
+                procesarDecisionesTomadas("src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
+                procesarDecisionesTomadas("src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", idArticulo);          
                 editor.tareaAsignada(idArticulo);
                 if(editor.getDecisionTomada() && editor.getDecision()){
                     verEstadoArticulo(idArticulo);                
@@ -244,6 +244,7 @@ public class Aplicacion {
             System.out.println("Usuario o contraseña incorrectos.");
         }
     }
+    
     public static void verEstadoArticulo(int idArticulo) {
         
 
@@ -302,6 +303,7 @@ public class Aplicacion {
             throw new RuntimeException(e);
         }
     }
+    
     public static void escribirArchivo(String nombreArchivo, String contenido) {
         try {
             // Leer el contenido existente del archivo
@@ -467,7 +469,8 @@ public class Aplicacion {
         }
         return null;
     }
-    public static void procesarComentariosDecisiones(String nombreArchivo, int idArticulo) {
+    
+    public static void procesarDecisionesTomadas(String nombreArchivo, int idArticulo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             br.readLine();
             String linea;
@@ -521,5 +524,4 @@ public class Aplicacion {
         }
     }
 
-    
 }

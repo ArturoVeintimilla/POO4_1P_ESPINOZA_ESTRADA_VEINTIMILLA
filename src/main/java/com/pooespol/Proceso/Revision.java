@@ -12,6 +12,7 @@ public class Revision {
     private Revisor revisor2;
     private Editor editor;
 
+    //Constructor de la clase
     public Revision(Articulo articulo, Revisor revisor1, Revisor revisor2, Editor editor) {
         this.articulo = articulo;
         this.revisor1 = revisor1;
@@ -19,6 +20,7 @@ public class Revision {
         this.editor = editor;
     }
 
+    //Getters y Setters
     public Revisor getRevisor1() {
         return revisor1;
     }
@@ -43,7 +45,7 @@ public class Revision {
         this.articulo = articulo;
     }
 
-    
+    //Metodos
     public void resultadoRevision() {
         if (editor.getDecision()) {
             articulo.setEstado(EstadoArticulo.PUBLICADO);

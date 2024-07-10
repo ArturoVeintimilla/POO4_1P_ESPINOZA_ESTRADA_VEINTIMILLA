@@ -11,7 +11,8 @@ public abstract class Usuario {
         this.apellido = apellido;
         this.correo = correo;
     }
-
+    
+    //Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -28,7 +29,7 @@ public abstract class Usuario {
         System.out.println("");
     }
 
-    //Revisar: public abstract Correo generarCorreo();
+    //Metodos:
 
     @Override
     public String toString() {

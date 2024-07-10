@@ -12,6 +12,7 @@ public class Autor extends Usuario {
     private String institucion;
     private String campoInvestigacion;
 
+    //Constructor de la clase
     public Autor(int codigoID, String nombre, String apellido, String correo, String institucion, String campoInvestigacion) {
         super(nombre,apellido,correo);
         this.codigoID = codigoID;
@@ -19,9 +20,11 @@ public class Autor extends Usuario {
         this.campoInvestigacion = campoInvestigacion;
     }
 
+    //Getters y Setters
     public int getCodigoID() {
         return codigoID;
     }
+   
     public String getInstitucion() {
         return institucion;
     }
@@ -30,6 +33,7 @@ public class Autor extends Usuario {
         return campoInvestigacion;
     }
 
+    //Metodos
     @Override
     public String toString() {
         return  super.toString()+
@@ -57,19 +61,9 @@ public class Autor extends Usuario {
 
         Articulo articulo = new Articulo(autor,codigoArticulo, tituloArticulo, resumenArticulo, contenidoArticulo, palabrasClaveArticulo);
         articulos.add(articulo);
-        
-        //Escribe al articulo en el archivo Articulos.txt 
-
         System.out.println(articulo.toString());
 
 
     }
 
-    //COMPLETAR
-   
-        
-        
-        
-        
-    
 }
