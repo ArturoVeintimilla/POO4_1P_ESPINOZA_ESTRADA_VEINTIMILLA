@@ -1,1 +1,2 @@
 ---------------INVESTIGADORES---------------------------
+Investigador: Nombre='a', apellido='a', correo='a' , institucion='a', campoInvestigacion='a' 

@@ -7,3 +7,4 @@ Editor,7,Gianluca,Espinoza,gianlu@gmail.com,editor3,mnop9012,Journal C
 Editor,8,Sebastian,Toaza,sebastoa@gmail.com,editor4,qrst3456,Journal D
 Revisor,9,Arturo,Yipez,artyi@gmail.com,revisor3,ijkl7654,Biología
 Revisor,10,Alejandro,Estrada,alest@gmail.com,revisor4,poiu3423,Fisica
+Autor,9,a,a,al@gmail.com,a,a

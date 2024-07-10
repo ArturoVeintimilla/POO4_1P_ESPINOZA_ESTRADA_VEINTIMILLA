@@ -224,8 +224,10 @@ public class Aplicacion {
                 procesarDecisionesTomadas("src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
                 procesarDecisionesTomadas("src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", idArticulo);          
                 editor.tareaAsignada(idArticulo);
-                if(editor.getDecisionTomada() && editor.getDecision()){
-                    verEstadoArticulo(idArticulo);                
+                if(editor.getDecisionTomada()==false){
+                    editor.setDecisionTomada(true);                
+                    verEstadoArticulo(idArticulo);
+                                    
                 }
             } else if (usuarioEncontrado instanceof Revisor) {
                 Revisor revisor = (Revisor) usuarioEncontrado;
@@ -263,10 +265,9 @@ public class Aplicacion {
 
         if (!encontrado) {
             System.out.println("Artículo no encontrado.");
+            System.out.println("\nPresione Enter para volver al menú principal.");
         }
-
-        System.out.println("\nPresione Enter para volver al menú principal.");
-        sc.nextLine();
+        
     }
 
     public static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
@@ -500,12 +501,12 @@ public class Aplicacion {
                                 }
                             }
                         }
-                    }else if( partes.length==7){
+                    }else if( partes.length==8){
                         for (Articulo a : articulos) {
                             if (a.getCodigoArticulo() == idArticulo) {
                                 // Obtener nombre del revisor, decisión y comentarios
                                 boolean decisionEditor = Boolean.parseBoolean(partes[6].split(":")[1].trim());
-                                boolean decisionTomada = Boolean.parseBoolean(partes[5].split(":")[1].trim());
+                                boolean decisionTomada = Boolean.parseBoolean(partes[7].split(":")[1].trim());
                                 Editor editor=a.getEditor();
                                 editor.setdecision(decisionEditor);
                                 editor.setDecisionTomada(decisionTomada);

@@ -1,1 +1,2 @@
 --------------ARTICULO SUBIDOS----------------------
+El Articulo con Titulo='a', Autor:a a, codigo del Articulo=10020, resumen='a', contenido='a', palabrasClave='a', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Luis Ramírez

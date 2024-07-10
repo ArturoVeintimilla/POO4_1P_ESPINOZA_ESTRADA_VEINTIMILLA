@@ -101,7 +101,6 @@ public class Editor extends Usuario {
         } else{
             decisionEditor= "no aprobado";
         }
-        System.out.println(decisionEditor);
         for (Articulo a : ArticuloAsignados) {
             if (a.getCodigoArticulo() == idArticulo) {
                 articuloEncontrado = true;
@@ -115,14 +114,14 @@ public class Editor extends Usuario {
                         System.out.println("Decisión Revisor " + r.getNombre() + ": No aprobado");
                     }
                 }
-                
                 System.out.println("");
                 if(decisionTomada== false){
                     this.decision = tomarDecision(a);
-                    decisionTomada=true;
                     break; // Salir del bucle una vez encontrado el artículo
                 } else{
                     System.out.println("Ya has tomado la decicsion sobre este articulo, revisa los otros articulos asignados y en caso de no tener, espere a mas articulos. Muchas Gracias.");
+                    System.out.println("Su decision: "+decisionEditor);
+
                 }
             }
         }

@@ -94,9 +94,7 @@ public class Revision {
             "Estado del Artículo: " + articulo.getEstado() + "\n";
             
         String linea="Articulo: "+articulo.getTitulo()+", Codigo: "+articulo.getCodigoArticulo()+", Decision R1: "+decisionRevisor1+", Comentarios R1: "+revisor1.getComentarios()+", Decision R2:"+decisionRevisor2+", Comentarios R2: "+revisor2.getComentarios()+", Decision de Editor "+editor.getNombre()+": "+decisionEditor1+", decision ya tomada: "+editor.getDecisionTomada();
-        if(editor.getDecisionTomada()==false){
-            Aplicacion.escribirArchivo("src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt",linea );
-        }
+        Aplicacion.escribirArchivo("src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt",linea );
         return informe;
     }
 }
