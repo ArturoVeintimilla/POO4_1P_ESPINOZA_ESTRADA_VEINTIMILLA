@@ -32,7 +32,7 @@ public class Aplicacion {
     public static void main(String[] args) {
         cargarUsuariosDesdeArchivo("src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
         cargarArticulos("src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt"); // Cargar datos de artículos desde archivo
-
+        //hola
 
         System.out.println("\nBienvenido al sistema de gestión de artículos científicos");
 
