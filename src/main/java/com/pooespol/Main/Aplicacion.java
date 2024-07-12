@@ -81,8 +81,18 @@ public class Aplicacion {
         String nombreAutor = scanner.nextLine();
         System.out.print("Apellido: ");
         String apellidoAutor = scanner.nextLine();
-        System.out.print("Correo electrónico: ");
-        String correoAutor = scanner.nextLine();
+        String correoAutor="";
+        while (true) {
+            System.out.print("Correo electrónico: ");
+            correoAutor = scanner.nextLine();
+            
+            // Validar que solo haya un @ en el correo
+            if (correoAutor.contains("@") && correoAutor.indexOf("@") == correoAutor.lastIndexOf("@")) {
+                break;
+            } else {
+                System.out.println("Correo electrónico no válido. Inténtelo de nuevo.");
+            }
+        }
         System.out.print("Institución: ");
         String institucion = scanner.nextLine();
         System.out.print("Campo de investigación: ");
@@ -223,8 +233,8 @@ public class Aplicacion {
                 sc.nextLine();
                 procesarDecisionesTomadas("src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);          
                 procesarDecisionesTomadas("src\\main\\java\\com\\pooespol\\Informacion.txt\\Revision.txt", idArticulo);          
-                editor.tareaAsignada(idArticulo);
-                if(editor.getDecisionTomada()==false){
+                boolean articuloEncontrado=editor.tareaAsignada(idArticulo);
+                if(editor.getDecisionTomada()==false&& articuloEncontrado ){
                     editor.setDecisionTomada(true);                
                     verEstadoArticulo(idArticulo);
                                     
@@ -506,6 +516,7 @@ public class Aplicacion {
                             if (a.getCodigoArticulo() == idArticulo) {
                                 // Obtener nombre del revisor, decisión y comentarios
                                 boolean decisionEditor = Boolean.parseBoolean(partes[6].split(":")[1].trim());
+                                System.out.println(decisionEditor);
                                 boolean decisionTomada = Boolean.parseBoolean(partes[7].split(":")[1].trim());
                                 Editor editor=a.getEditor();
                                 editor.setdecision(decisionEditor);

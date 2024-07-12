@@ -1,3 +1,1 @@
 ---------------COMENTARIOS Y DECISIONES DE LOS REVISORES---------------------------
-Revisor:Pedro Sánchez, Articulo: a, Codigo: 10020, decision del Revisor1: true, comentarios del Revisor1: holaxd, decision ya tomada: true
-Revisor:Juan Pérez, Articulo: a, Codigo: 10020, decision del Revisor2: true, comentarios del Revisor2: xdd, decision ya tomada: true

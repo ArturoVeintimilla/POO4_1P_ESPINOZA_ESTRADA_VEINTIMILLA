@@ -92,7 +92,7 @@ public class Editor extends Usuario {
 
     }
     
-    public void tareaAsignada(int idArticulo) {
+    public boolean tareaAsignada(int idArticulo) {
         System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);
         boolean articuloEncontrado = false;
         String decisionEditor;
@@ -117,8 +117,9 @@ public class Editor extends Usuario {
                 System.out.println("");
                 if(decisionTomada== false){
                     this.decision = tomarDecision(a);
-                    break; // Salir del bucle una vez encontrado el artículo
+                    return articuloEncontrado;
                 } else{
+        
                     System.out.println("Ya has tomado la decicsion sobre este articulo, revisa los otros articulos asignados y en caso de no tener, espere a mas articulos. Muchas Gracias.");
                     System.out.println("Su decision: "+decisionEditor);
 
@@ -127,8 +128,11 @@ public class Editor extends Usuario {
         }
     
         if (!articuloEncontrado) {
-            System.out.println("Artículo con ID " + idArticulo + " no encontrado en los artículos asignados.");
+            System.out.println("Artículo con ID " + idArticulo + " no ha sido encontrado en los artículos asignados para este editor.");
+
         }
+        return articuloEncontrado;
+
 
     }
     
