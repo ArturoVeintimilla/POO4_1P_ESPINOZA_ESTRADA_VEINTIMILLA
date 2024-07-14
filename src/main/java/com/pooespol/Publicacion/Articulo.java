@@ -7,7 +7,7 @@ import com.pooespol.Tipos.EstadoArticulo;
 
 /**
  * Clase que representa un artículo publicado en el Sistema de Gestion Articulos.
- */
+ **/
 public class Articulo {
     private Autor autor;
     private int codigoArticulo;

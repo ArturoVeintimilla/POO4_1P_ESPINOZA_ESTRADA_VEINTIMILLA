@@ -14,7 +14,7 @@ public class Autor extends Usuario {
     private String institucion;
     private String campoInvestigacion;
 
-     /**
+    /**
      * Constructor de la clase Autor.
      * @param codigoID           El código identificador único del autor.
      * @param nombre             El nombre del autor.
