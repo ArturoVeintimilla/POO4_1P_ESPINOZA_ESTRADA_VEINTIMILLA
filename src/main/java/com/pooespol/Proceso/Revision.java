@@ -6,13 +6,22 @@ import com.pooespol.Principales.Revisor;
 import com.pooespol.Publicacion.Articulo;
 import com.pooespol.Tipos.EstadoArticulo;
 
+/**
+ * Clase que representa el proceso de revisión de un artículo por parte de revisores y un editor.
+ **/
 public class Revision {
     private Articulo articulo;
     private Revisor revisor1;
     private Revisor revisor2;
     private Editor editor;
 
-    //Constructor de la clase
+    /**
+     * Constructor de la clase Revision.
+     * @param articulo El artículo que se está revisando.
+     * @param revisor1 El primer revisor asignado al artículo.
+     * @param revisor2 El segundo revisor asignado al artículo.
+     * @param editor   El editor responsable del artículo.
+     **/
     public Revision(Articulo articulo, Revisor revisor1, Revisor revisor2, Editor editor) {
         this.articulo = articulo;
         this.revisor1 = revisor1;
@@ -20,32 +29,58 @@ public class Revision {
         this.editor = editor;
     }
 
-    //Getters y Setters
+    /**
+     * Obtiene el primer revisor asignado al artículo.
+     * @return El primer revisor.
+     **/
     public Revisor getRevisor1() {
         return revisor1;
     }
 
+     /**
+     * Establece el primer revisor asignado al artículo.
+     * @param revisor1 El revisor a establecer.
+     **/
     public void setRevisor1(Revisor revisor1) {
         this.revisor1 = revisor1;
     }
 
+    /**
+     * Obtiene el segundo revisor asignado al artículo.
+     * @return El segundo revisor.
+     **/
     public Revisor getRevisor2() {
         return revisor2;
     }
 
+    /**
+     * Establece el segundo revisor asignado al artículo.
+     * @param revisor2 El revisor a establecer.
+     **/
     public void setRevisor2(Revisor revisor2) {
         this.revisor2 = revisor2;
     }
 
+    /**
+     * Obtiene el artículo asociado a la revisión.
+     * @return El artículo asociado.
+     **/
     public Articulo getArticulo() {
         return articulo;
     }
 
+    /**
+     * Establece el artículo asociado a la revisión.
+     * @param articulo El artículo a establecer.
+     **/
     public void setArticulo(Articulo articulo) {
         this.articulo = articulo;
     }
 
-    //Metodos
+    /**
+     * Método que determina el resultado final de la revisión.
+     * Actualiza el estado del artículo según la decisión del editor.
+     **/
     public void resultadoRevision() {
         if (editor.getDecision()) {
             articulo.setEstado(EstadoArticulo.PUBLICADO);
@@ -56,7 +91,10 @@ public class Revision {
         }
     }
     
-
+    /**
+     * Genera un informe detallado de la revisión.
+     * @return Una cadena que contiene información detallada sobre la revisión.
+     **/
     public String imprimirRevision() {
         String decisionRevisor1=null;
         String decisionRevisor2=null;

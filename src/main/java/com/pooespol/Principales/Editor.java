@@ -7,6 +7,9 @@ import com.pooespol.Publicacion.Articulo;
 import com.pooespol.Tipos.EstadoArticulo;
 import com.pooespol.Tipos.TipoDeRol;
 
+/**
+ * Clase Editor que hereda de Usuario. Representa a un editor en el Sistema de Gestion Articulos.
+ */
 public class Editor extends Usuario {
     private String nombreJournal;
     private ArrayList<Articulo>ArticuloAsignados; // Nuevo atributo para almacenar el artículo asignado al revisor
@@ -17,7 +20,15 @@ public class Editor extends Usuario {
     private boolean decisionTomada;
     public static  Scanner sc = new Scanner(System.in);
 
-    //Constructor de la clase
+    /**
+     * Constructor de la clase Editor.
+     * @param nombre      Nombre del editor.
+     * @param apellido    Apellido del editor.
+     * @param correo      Correo electrónico del editor.
+     * @param userAcceso  Usuario para acceder al sistema.
+     * @param contrasena  Contraseña para acceder al sistema.
+     * @param nombreJournal Nombre del journal al que pertenece el editor.
+     **/    
     public Editor(String nombre, String apellido, String correo, String userAcceso, String contrasena, String nombreJournal) {
         super(nombre, apellido, correo);
         this.tipoRol=TipoDeRol.E;
@@ -28,57 +39,110 @@ public class Editor extends Usuario {
 
     }
     
-    //Getters y Setters
+    /**
+     * Establece los artículos asignados al editor.
+     * @param articulo Lista de artículos asignados.
+     **/
     public void setArticuloAsignados(ArrayList<Articulo> articulo) {
         this.ArticuloAsignados = articulo;
     }
     
+    /**
+     * Obtiene la lista de artículos asignados al editor.
+     * @return La lista de artículos asignados.
+     **/
     public ArrayList<Articulo> getArticulosAsignado() {
         return ArticuloAsignados;
     }
     
+    /**
+     * Obtiene el nombre del journal al que pertenece el editor.
+     * @return El nombre del journal.
+     **/
     public String getNombreJournal() {
         return nombreJournal;
     }
     
+    /**
+     * Obtiene la decisión del editor sobre un artículo.
+     * @return La decisión del editor.
+     **/
     public boolean getDecision() {
         return decision;
     }
     
+    /**
+     * Obtiene el usuario de acceso del editor.
+     * 
+     * @return El usuario de acceso.
+     **/
     public String getUserAcesso(){
         return userAcceso;
     }
     
+    /**
+     * Obtiene el estado de decisión tomada por el editor.
+     * @return El estado de decisión tomada.
+     **/
     public boolean getDecisionTomada() {
         return decisionTomada;
     }
     
+    /**
+     * Establece el usuario de acceso del editor.
+     * @param user Usuario de acceso.
+     **/
     public void setUserAcceso(String user){
         this.userAcceso=user;
 
     }
     
+    /**
+     * Obtiene la contraseña del editor.
+     * @return La contraseña del editor.
+     **/
     public String getContrasena(){
         return contrasena;
     }
     
+    /**
+     * Establece la contraseña del editor.
+     * @param password Contraseña del editor.
+     **/
     public void setContraseña( String password){
         this.contrasena=password;
     }
     
+    /**
+     * Establece la decisión del editor sobre un artículo.
+     * @param decision Decisión del editor.
+     **/
     public void setdecision(boolean decision) {
         this.decision=decision;
     }
 
+    /**
+     * Establece el estado de decisión tomada por el editor.
+     * @param decisionTomada Estado de decisión tomada.
+     **/
     public void setDecisionTomada(boolean decisionTomada) {
         this.decisionTomada=decisionTomada;
     } 
     
+    /**
+     * Obtiene el tipo de rol del editor.
+     * @return El tipo de rol del editor.
+     **/
     public TipoDeRol getTipoDeRol(){
         return tipoRol;
     }
     
-    //Metodos
+    /**
+     * Realiza el proceso de inicio de sesión para el editor.
+     * @param user     Usuario para iniciar sesión.
+     * @param password Contraseña para iniciar sesión.
+     * @return true si el inicio de sesión es exitoso, false en caso contrario.
+     **/
     public boolean IniciarSesion(String user, String password){
         if (userAcceso.equals(user)&& contrasena.equals(password)){
             return true;
@@ -87,11 +151,20 @@ public class Editor extends Usuario {
         }
     }
     
+    /**
+     * Establece los artículos asignados al editor.
+     * @param articulo Lista de artículos asignados.
+     **/
     @Override
     public void tareaAsignada(){
 
     }
     
+   /**
+     * Método que maneja la tarea asignada al editor.
+     * @param idArticulo ID del artículo a revisar.
+     * @return true si el artículo se encuentra y se procesa, false si no se encuentra.
+     **/
     public boolean tareaAsignada(int idArticulo) {
         System.out.println("Revisión de artículos pendientes para la revista " + nombreJournal);
         boolean articuloEncontrado = false;
@@ -136,6 +209,11 @@ public class Editor extends Usuario {
 
     }
     
+    /**
+     * Permite al editor tomar una decisión sobre un artículo.
+     * @param articulo Artículo sobre el cual se toma la decisión.
+     * @return true si se aprueba el artículo, false si se rechaza.
+     **/
     public boolean tomarDecision(Articulo articulo) {
         // Simulación de toma de decisión
         System.out.println("Registro de decision final del articulo: "+ articulo.getTitulo());
@@ -164,6 +242,10 @@ public class Editor extends Usuario {
     
     }
     
+    /**
+     * Muestra los detalles de un artículo asignado al editor. 
+     * @param idArticulo ID del artículo del cual se muestran los detalles.
+     **/
     public void mostrarDetalleArticulo(int idArticulo) {
         for(Articulo a: ArticuloAsignados){
             if(a.getCodigoArticulo()==idArticulo){
@@ -180,7 +262,11 @@ public class Editor extends Usuario {
 
         }
     }
-        
+    
+    /**
+     * Devuelve una representación en cadena del editor.
+     * @return La representación en cadena del editor.
+     **/
     @Override
     public String toString() {
         return "Editor: " +super.toString()+

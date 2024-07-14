@@ -24,11 +24,18 @@ import com.pooespol.Tipos.TipoDeRol;
 
 import java.util.Random;
 
+/**
+ * Clase principal de la aplicación de gestión de artículos científicos.
+ **/
 public class Aplicacion {
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
     private static ArrayList<Articulo> articulos = new ArrayList<>();
     public static Scanner sc = new Scanner(System.in);
 
+    /**
+     * Método principal que inicia la aplicación.
+     * @param args Argumentos de la línea de comandos.
+     **/
     public static void main(String[] args) {
         cargarUsuariosDesdeArchivo("src\\main\\java\\com\\pooespol\\Informacion.txt\\usuarios.txt"); // Cargar datos de usuarios desde archivo
         cargarArticulos("src\\main\\java\\com\\pooespol\\Informacion.txt\\Articulos.txt"); // Cargar datos de artículos desde archivo
@@ -57,6 +64,9 @@ public class Aplicacion {
         }
     }
 
+    /**
+     * Muestra el menú principal de la aplicación.
+     **/
     public static void mostrarMenu() {
         System.out.println("\nOpciones disponibles:");
         System.out.println("1. Someter artículo");
@@ -65,6 +75,11 @@ public class Aplicacion {
         System.out.print("Ingrese la opción deseada: ");
     }
 
+     /**
+     * Obtiene la opción ingresada por el usuario desde el teclado.
+     * @param sc El objeto Scanner para leer la entrada del usuario.
+     * @return La opción seleccionada por el usuario.
+     **/
     public static int obtenerOpcion(Scanner sc) {
         while (true) {
             try {
@@ -75,6 +90,10 @@ public class Aplicacion {
         }
     }
 
+    /**
+     * Solicita los datos para someter un nuevo artículo y lo registra en el sistema.
+     * @param scanner El objeto Scanner para leer la entrada del usuario.
+     **/
     public static void someterArticulo(Scanner scanner) {
         System.out.println("\nRegistro de datos del autor:");
         System.out.print("Nombre: ");
@@ -115,6 +134,10 @@ public class Aplicacion {
         asignarRevisores(articuloReciente);
     }
 
+    /**
+     * Asigna revisores y un editor a un artículo recién sometido.
+     * @param articulo El artículo al que se asignarán los revisores y el editor.
+     **/
     public static void asignarRevisores(Articulo articulo) {
         ArrayList<Revisor> disponibles = obtenerRevisoresDisponibles();
         articulos.add(articulo);
@@ -172,6 +195,10 @@ public class Aplicacion {
 
     }
     
+    /**
+     * Obtiene una lista de revisores disponibles.
+     * @return Una lista de revisores disponibles.
+     */
     public static ArrayList<Revisor>  obtenerRevisoresDisponibles() {
         ArrayList<Revisor>  disponibles = new ArrayList<>();
         for (Usuario usuario : usuarios) {
@@ -185,6 +212,10 @@ public class Aplicacion {
         return disponibles;
     }
 
+     /**
+     * Obtiene una lista de editores disponibles.
+     * @return Una lista de editores disponibles.
+     **/
     public static ArrayList<Editor> obtenerEditoresDisponibles() {
         ArrayList<Editor> disponibles = new ArrayList<>();
         for (Usuario usuario : usuarios) {
@@ -198,6 +229,9 @@ public class Aplicacion {
         return disponibles;
     }
 
+    /**
+     * Inicia sesión para un usuario y permite ver el estado de los artículos.
+     **/
     public static void iniciarSesion() {
         System.out.print("Usuario: ");
         String usuario = sc.nextLine();
@@ -257,6 +291,10 @@ public class Aplicacion {
         }
     }
     
+    /**
+     * Ver Estado Articulo permite buscar el articulo segun el id que haya ingresado el usuario.
+     * @param idArticulo Es el id del articulo que querra ver la informacion.
+     **/
     public static void verEstadoArticulo(int idArticulo) {
         
 
@@ -280,6 +318,12 @@ public class Aplicacion {
         
     }
 
+    /**
+     * Enviar Correo permite enviar un correo de manera real al destinatario que necesite.
+     * @param destinatario es la direccion de correo de la persona que desea enviar el correo.
+     * @param asunto es el asunto que se presentara en el correo.
+     * @param cuerpo es el cuerpo que arma el mensaje que se mostrara en el correo.
+     **/
     public static void enviarCorreo(String destinatario, String asunto, String cuerpo) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -315,6 +359,11 @@ public class Aplicacion {
         }
     }
     
+    /**
+     * Escribir Archivo permite guardar informacion recopilada en el .txt deseado.
+     * @param nombreArchivo es la ruta del archivo .txt .
+     * @param contenido es lo que se escribira en el archivo .txt .
+     **/
     public static void escribirArchivo(String nombreArchivo, String contenido) {
         try {
             // Leer el contenido existente del archivo
@@ -354,6 +403,10 @@ public class Aplicacion {
         }
     }
 
+    /**
+     * Carga la lista de usuarios desde un archivo.
+     * @param nombreArchivo La ruta del archivo de usuarios.
+     */
     public static void cargarUsuariosDesdeArchivo(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             br.readLine();
@@ -412,6 +465,10 @@ public class Aplicacion {
         }
     }
 
+     /**
+     * Carga la lista de artículos desde un archivo.
+     * @param nombreArchivo La ruta del archivo de artículos.
+     */
     public static void cargarArticulos(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             br.readLine();
@@ -472,6 +529,11 @@ public class Aplicacion {
         }
     }
     
+    /**
+     * Obtener Usuario permite obtener al usuario nomas por el nombre y apellido.
+     * @param nombre es el nombre recibido.
+     * @param apellido es el apellido recibido.
+     */
     public static Usuario obtenerUsuarioPorNombre(String nombre, String apellido) {
         for (Usuario usuario : usuarios) {
             if (usuario.getNombre().equalsIgnoreCase(nombre) && usuario.getApellido().equalsIgnoreCase(apellido)) {
@@ -481,6 +543,11 @@ public class Aplicacion {
         return null;
     }
     
+    /**
+     * Obtener Usuario permite obtener al usuario nomas por el nombre y apellido.
+     * @param nombreArchivo es la ruta del archivo .txt .
+     * @param idArticulo Es el id del articulo que querra ver la informacion.
+     */
     public static void procesarDecisionesTomadas(String nombreArchivo, int idArticulo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             br.readLine();
