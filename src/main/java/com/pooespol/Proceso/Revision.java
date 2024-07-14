@@ -1,8 +1,7 @@
 package com.pooespol.Proceso;
 
 import com.pooespol.Main.Aplicacion;
-import com.pooespol.Principales.Editor;
-import com.pooespol.Principales.Revisor;
+import com.pooespol.Principales.*;
 import com.pooespol.Publicacion.Articulo;
 import com.pooespol.Tipos.EstadoArticulo;
 

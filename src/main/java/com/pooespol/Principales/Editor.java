@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.pooespol.Publicacion.Articulo;
-import com.pooespol.Tipos.EstadoArticulo;
-import com.pooespol.Tipos.TipoDeRol;
+import com.pooespol.Tipos.*;
 
 /**
  * Clase Editor que hereda de Usuario. Representa a un editor en el Sistema de Gestion Articulos.

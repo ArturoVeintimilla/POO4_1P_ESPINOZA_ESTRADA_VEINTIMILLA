@@ -14,12 +14,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.pooespol.Principales.Editor;
-import com.pooespol.Principales.Revisor;
-import com.pooespol.Principales.Usuario;
+import com.pooespol.Principales.*;
 import com.pooespol.Proceso.Revision;
-import com.pooespol.Publicacion.Articulo;
-import com.pooespol.Publicacion.Autor;
+import com.pooespol.Publicacion.*;
 import com.pooespol.Tipos.TipoDeRol;
 
 import java.util.Random;

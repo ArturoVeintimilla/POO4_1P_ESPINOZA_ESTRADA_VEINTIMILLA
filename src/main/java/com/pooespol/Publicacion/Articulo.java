@@ -2,8 +2,7 @@ package com.pooespol.Publicacion;
 
 import java.util.ArrayList;
 
-import com.pooespol.Principales.Editor;
-import com.pooespol.Principales.Revisor;
+import com.pooespol.Principales.*;
 import com.pooespol.Tipos.EstadoArticulo;
 
 /**
