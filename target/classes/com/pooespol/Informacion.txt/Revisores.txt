@@ -1,3 +1,1 @@
 ---------------REVISORES---------------------------
-Revisor: Nombre='Pedro', apellido='Sanchez', correo='pedro232474824@gmail.com' , especialidad='Biologia'
-Revisor: Nombre='Juan', apellido='Perez', correo='juan232474824@gmail.com' , especialidad='Quimica'

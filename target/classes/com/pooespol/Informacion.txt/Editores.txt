@@ -1,2 +1,1 @@
 ---------------Editores---------------------------
-Editor: Nombre='Elena', apellido='Garcia', correo='elena@gmail.com' , nombreJournal='Journal B'

@@ -1,2 +1,1 @@
 ---------------PROCESO DE REVISION---------------------------
-Articulo: titulo, Codigo: 28, Decision R1: Aprobado, Comentarios R1: nice, Decision R2:Aprobado, Comentarios R2: nice2, Decision de Editor Elena: true, decision ya tomada: true

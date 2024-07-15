@@ -1,2 +1,1 @@
 ---------------INVESTIGADORES---------------------------
-Investigador: Nombre='Arturo', apellido='Veintimilla', correo='a@gmail.com' , institucion='ABC', campoInvestigacion='EFg' 
