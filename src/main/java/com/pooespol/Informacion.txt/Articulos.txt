@@ -1,2 +1,1 @@
 --------------ARTICULO SUBIDOS----------------------
-El Articulo con Titulo='hola', Autor:roberto estrada, codigo del Articulo=30021, resumen='hii', contenido='hello', palabrasClave='h', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Luis Ramírez

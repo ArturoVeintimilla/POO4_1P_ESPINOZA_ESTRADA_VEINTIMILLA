@@ -1,3 +1,1 @@
 ---------------COMENTARIOS Y DECISIONES DE LOS REVISORES---------------------------
-Revisor:Pedro Sánchez, Articulo: hola, Codigo: 30021, decision del Revisor1: true, comentarios del Revisor1: hola, decision ya tomada: true
-Revisor:Juan Pérez, Articulo: hola, Codigo: 30021, decision del Revisor2: true, comentarios del Revisor2: me gusto, decision ya tomada: true

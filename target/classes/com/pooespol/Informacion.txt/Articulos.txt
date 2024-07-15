@@ -1,2 +1,2 @@
 --------------ARTICULO SUBIDOS----------------------
-El Articulo con Titulo='hola', Autor:roberto estrada, codigo del Articulo=30021, resumen='hii', contenido='hello', palabrasClave='h', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sánchez, Revisor2: Juan Pérez, Editor :Luis Ramírez
+El Articulo con Titulo='titulo', Autor:Arturo Veintimilla, codigo del Articulo=28, resumen='resum', contenido='cont', palabrasClave='pc', estado=SINREVISION fue sometido existosamente, Revisor1 :Pedro Sanchez, Revisor2: Juan Perez, Editor :Elena Garcia

@@ -190,7 +190,7 @@ public class Revisor extends Usuario {
     @Override
     public void tareaAsignada() {
         int idArticulo= articuloAsignado.getCodigoArticulo();
-        Aplicacion.procesarDecisionesTomadas("POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);     
+        Aplicacion.procesarDecisionesTomadas("src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt", idArticulo);     
         if (articuloAsignado != null && decisionTomada==false) {
             System.out.println("Revisión de artículo asignada: " + articuloAsignado.getTitulo());
             mostrarDetalleArticulo();
@@ -260,6 +260,6 @@ public class Revisor extends Usuario {
     public void guardarComentarios(Revisor revisor){
         int i= revisor.getArticuloAsignados().getRevisores().indexOf(revisor);
         i+=1;
-        Aplicacion.escribirArchivo("POO4_1P_ESPINOZA_ESTRADA_VEINTIMILLA\\src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt","Revisor:"+revisor.getNombre()+" "+ revisor.getApellido()+", Articulo: "+articuloAsignado.getTitulo()+", Codigo: "+articuloAsignado.getCodigoArticulo()+", decision del Revisor"+i+": "+revisor.getDecision()+", comentarios del Revisor"+i+": "+revisor.getComentarios()+", decision ya tomada: "+decisionTomada );
+        Aplicacion.escribirArchivo("src\\main\\java\\com\\pooespol\\Informacion.txt\\ComentariosDecisiones.txt","Revisor:"+revisor.getNombre()+" "+ revisor.getApellido()+", Articulo: "+articuloAsignado.getTitulo()+", Codigo: "+articuloAsignado.getCodigoArticulo()+", decision del Revisor"+i+": "+revisor.getDecision()+", comentarios del Revisor"+i+": "+revisor.getComentarios()+", decision ya tomada: "+decisionTomada );
     }
 }

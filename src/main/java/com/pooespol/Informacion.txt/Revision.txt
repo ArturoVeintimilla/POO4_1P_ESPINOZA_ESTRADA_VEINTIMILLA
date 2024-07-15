@@ -1,2 +1,1 @@
 ---------------PROCESO DE REVISION---------------------------
-Articulo: hola, Codigo: 30021, Decision R1: No aprobado, Comentarios R1: null, Decision R2:No aprobado, Comentarios R2: null, Decision de Editor Luis: true, decision ya tomada: true
